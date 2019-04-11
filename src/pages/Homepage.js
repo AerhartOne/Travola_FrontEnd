@@ -1,10 +1,12 @@
 import React from 'react'
 import { Jumbotron, Button } from 'reactstrap';
+import HomepageNav from '../containers/HomepageNav'
 
 export default class Homepage extends React.Component{
     render(){
         return(
             <div>
+                <HomepageNav/>
                 <Jumbotron>
                     <h1 className="display-3">Travola</h1>
                     <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
