@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Before Starting
+
+Before running the ReactJS server, run
+
+### `npm install`
+
+to install all required node_modules. These dependencies are loaded from package.json.
+
 ## Available Scripts
 
 In the project directory, you can run:
