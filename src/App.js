@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Route } from 'react-router-dom';
+import Homepage from './pages/Homepage';
 
 class App extends Component {
   render() {
     return (
       <>
-        <h1>Hello world</h1>
+        <Router>
+          <Route path = "/"
+            component = {props => {
+              return (
+                <Homepage
+                {...props}
+                />
+              )
+            }}
+            />
+        </Router>
       </>
     );
   }
