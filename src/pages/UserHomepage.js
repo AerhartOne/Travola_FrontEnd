@@ -35,7 +35,7 @@ export default class UserHomepage extends React.Component{
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
-                                <Button id="add-button" href="">
+                                <Button id="add-button" href="/username/dashboard/new">
                                     <CardImg top width="100%" src={button} alt="Card image cap" />
                                     <CardText>Add new trip</CardText>
                                 </Button>
