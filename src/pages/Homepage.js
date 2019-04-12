@@ -3,7 +3,6 @@ import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignInForm from '../containers/SignInForm';
 import SignUpForm from '../containers/SignUpForm';
 import logo from '../images/travola-logo.png';
-
 import '../css/homepage.css'
 
 
