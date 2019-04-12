@@ -20,8 +20,8 @@ export default class UserHomepage extends React.Component{
             <>
             <NavBar/>
             <Container id="container">
-                <h1>Add/View Trip</h1>
                 <Row>
+                    <Col xs="12" lg="12"><h1>Add/View Trip</h1></Col>
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>

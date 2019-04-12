@@ -39,8 +39,8 @@ export default class UserProfilePage extends React.Component{
             </Container>
             <hr/>
             <Container>
-                <h1>Trip's History</h1>
                 <Row>
+                    <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
                     <Col xs="12" lg="4" className="mt-5">
                     <Card className="shadow">
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
