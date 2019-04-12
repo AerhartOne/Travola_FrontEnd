@@ -13,16 +13,16 @@ export default class NavBar extends React.Component{
         return(
             <>
                 <Navbar className="fixed-top" color="light" light expand="md">
-                    <NavbarBrand href="/nav"><img src={ logo } alt="travola logo" width="20%"/></NavbarBrand>
+                    <NavbarBrand href="/username"><img src={ logo } alt="travola logo" width="20%"/></NavbarBrand>
                     <Nav className="ml-auto"navbar>
                     <NavItem>
-                        <NavLink href="/nav">Home</NavLink>
+                        <NavLink href="/username">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink>Profile</NavLink>
+                        <NavLink href="/username/profile">Profile</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink>Settings</NavLink>
+                        <NavLink href="/username/setting">Settings</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink>Logout</NavLink>
