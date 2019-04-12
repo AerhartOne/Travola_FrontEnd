@@ -6,16 +6,17 @@ import {
     NavItem,
     NavLink,
         } from 'reactstrap';
+import logo from '../images/travola-logo.png';
 
 export default class NavBar extends React.Component{
     render(){
         return(
             <>
                 <Navbar className="fixed-top" color="light" light expand="md">
-                    <NavbarBrand href="/">Travola</NavbarBrand>
-                    <Nav className="ml-auto" navbar>
+                    <NavbarBrand href="/nav"><img src={ logo } alt="travola logo" width="20%"/></NavbarBrand>
+                    <Nav className="ml-auto"navbar>
                     <NavItem>
-                        <NavLink>Home</NavLink>
+                        <NavLink href="/nav">Home</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink>Profile</NavLink>
@@ -24,7 +25,7 @@ export default class NavBar extends React.Component{
                         <NavLink>Settings</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink>Log out</NavLink>
+                        <NavLink>Logout</NavLink>
                     </NavItem>
                     </Nav>
                 </Navbar>
