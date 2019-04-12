@@ -37,29 +37,29 @@ class SettingForm extends Component {
     render() {
         return (
             
-            <div className="FormCenter">
+            <div className="SettingCenter">
                 
-                <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="SettingFields" onSubmit={this.handleSubmit}>
                     
-                    <div className="FormField">
-                        <label className="NameField_Lable" htmlFor="Name">Change Name</label>
-                        <input type="name" id="name" className="NameField__Input" placeholder="Enter your new name" name="name" value={this.state.name} onChange={this.handleChange} />
+                    <div className="SettingField">
+                        <label className="SettingField_Lable" htmlFor="Name">Change Name</label>
+                        <input type="name" id="name" className="SettingField__Input" placeholder="Enter your new name" name="name" value={this.state.name} onChange={this.handleChange} />
                     </div>
 
-                    <div className="FormField">
-                        <label className="UsernameField_Lable" htmlFor="Username">Change Username</label>
-                        <input type="name" id="username" className="UsernameField__Input" placeholder="Enter your new username" name="username" value={this.state.username} 
+                    <div className="SettingField">
+                        <label className="SettingField_Lable" htmlFor="Username">Change Username</label>
+                        <input type="name" id="username" className="SettingField__Input" placeholder="Enter your new username" name="username" value={this.state.username} 
                         onChange={this.handleChange} />
                     </div>
 
-                    <div className="FormField">
-                        <label className="PasswordField_Lable" htmlFor="Password">Change Password</label>
-                        <input type="password" id="password" className="PasswordField__Input" placeholder="Enter your new password" name="password" value={this.state.password} 
+                    <div className="SettingField">
+                        <label className="SettingField_Lable" htmlFor="Password">Change Password</label>
+                        <input type="password" id="password" className="SettingField__Input" placeholder="Enter your new password" name="password" value={this.state.password} 
                         onChange={this.handleChange} />
                     </div>
 
-                    <div className="FormField">
-                        <button className="SubmitField__Button mr-20">Update</button>
+                    <div className="SettingField">
+                        <button className="SettingField__Button mr-20">Update</button>
                     </div>
 
                 </form>
