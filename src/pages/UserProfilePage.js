@@ -22,7 +22,7 @@ export default class UserProfilePage extends React.Component{
             <NavBar/>
             <Container id="detail-container">
                 <Row>
-                    <Col xs="4" >
+                    <Col xs="12" lg="4" >
                         <div id="image-col">
                             <a href="#">
                             <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
@@ -30,7 +30,7 @@ export default class UserProfilePage extends React.Component{
                             </a>
                         </div>
                     </Col>
-                    <Col xs="8">
+                    <Col xs="12" lg="8">
                         <h1>User's Profile</h1>
                         <h3>@Username</h3>
                         <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</h5>
@@ -41,7 +41,7 @@ export default class UserProfilePage extends React.Component{
             <Container>
                 <h1>Trip's History</h1>
                 <Row className="mt-5">
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -52,7 +52,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -63,7 +63,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -76,7 +76,7 @@ export default class UserProfilePage extends React.Component{
                     </Col>
                 </Row>
                 <Row className="mt-5">
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -87,7 +87,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -98,7 +98,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="4">
+                    <Col xs="12" lg="4">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
