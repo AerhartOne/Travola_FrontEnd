@@ -2,8 +2,10 @@ import React from 'react'
 import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignInForm from '../containers/SignInForm';
 import SignUpForm from '../containers/SignUpForm';
+import logo from '../images/travola-logo.png';
 
 import '../css/homepage.css'
+
 
 
 export default class Homepage extends React.Component{
@@ -14,7 +16,13 @@ export default class Homepage extends React.Component{
                 
                 <div className="App">
 
-                    <div className="App__Aside"></div>
+                    <div className="App__Aside">
+                        
+                        <div id="logo">
+                            <img src={ logo } alt="Travola-Logo" width="40%" height="auto" />
+                        </div>
+                    
+                    </div>
 
                     <div className="App__Form">
                         
