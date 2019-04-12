@@ -8,7 +8,7 @@ class SignUpForm extends Component {
         this.state = {
             email: '',
             password: '',
-            name: '',
+            username: '',
             hasAgreed: false
         };
 
@@ -39,8 +39,8 @@ class SignUpForm extends Component {
                 <form onSubmit={this.handleSubmit} className="FormFields">
                     
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="name">Full Name</label>
-                        <input type="text" id="name" className="FormField__Input" placeholder="Enter your full name" name="name" value={this.state.name} onChange={this.handleChange} />
+                        <label className="FormField__Label" htmlFor="name">Username</label>
+                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="name" value={this.state.name} onChange={this.handleChange} />
                     </div>
                     
                     <div className="FormField">
