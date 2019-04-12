@@ -1,0 +1,24 @@
+.App {
+    height: 100vh;
+    display: flex;
+    color: white;
+}
+
+.setting {
+    margin-top: 55px;
+}
+
+.InfoSetting {
+    width: 100%;
+    height: 100%;
+    background-color: #fae596;
+    padding: 400px 40px;
+    overflow: auto;
+}
+
+
+
+
+
+
+
