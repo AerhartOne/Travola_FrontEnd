@@ -23,7 +23,7 @@ export default class UserHomepage extends React.Component{
                 <h1>Add/View Trip</h1>
                 <Row>
                     <Col xs="12" lg="4" className="mt-5">
-                        <Card>
+                        <Card className="shadow">
                             <CardBody>
                                 <Button href="/username/dashboard">
                                     <CardImg top width="100%" src={random} alt="Card image cap" />
@@ -33,7 +33,7 @@ export default class UserHomepage extends React.Component{
                         </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5">
-                        <Card>
+                        <Card className="shadow">
                             <CardBody>
                                 <Button id="add-button" href="">
                                     <CardImg top width="100%" src={button} alt="Card image cap" />
