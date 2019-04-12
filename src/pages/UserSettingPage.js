@@ -1,14 +1,21 @@
-import React from 'react'
-import NavBar from '../containers/Navbar'
+import React from 'react';
+import NavBar from '../containers/Navbar';
+import SettingForm from '../containers/SettingForm';
+import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+
+import '../css/UserSetting.css'
 
 export default class UserSettingPage extends React.Component{
     render(){
         return(
-            <>
-            <NavBar/>
-            <h1>UserSettingPage</h1>
-            <h1>UserSettingPage</h1>
-            </>
+            <div>
+                <NavBar />
+                <div className="setting">
+                    <div className="InfoSetting">
+                        <SettingForm />
+                    </div>
+                </div>
+            </div>
         )
     }
 }
