@@ -7,6 +7,7 @@ import Homepage from './pages/Homepage';
 import UserHomepage from './pages/UserHomepage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserSettingPage from './pages/UserSettingPage';
+import TripDashboard from './pages/TripDashboard';
 
 
 
@@ -46,6 +47,15 @@ class App extends Component {
             component = {props => {
               return (
                 <UserSettingPage
+                {...props}
+                />
+              )
+            }}
+            />
+            <Route exact strict path = "/username/dashboard"
+            component = {props => {
+              return (
+                <TripDashboard
                 {...props}
                 />
               )

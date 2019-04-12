@@ -40,8 +40,8 @@ export default class UserProfilePage extends React.Component{
             <hr/>
             <Container>
                 <h1>Trip's History</h1>
-                <Row className="mt-5">
-                    <Col xs="12" lg="4">
+                <Row>
+                    <Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -52,7 +52,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="12" lg="4">
+                    <Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -63,7 +63,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                    <Col xs="12" lg="4">
+                    <Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -74,9 +74,7 @@ export default class UserProfilePage extends React.Component{
                         </CardBody>
                     </Card>
                     </Col>
-                </Row>
-                <Row className="mt-5">
-                    <Col xs="12" lg="4">
+                    <Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -86,8 +84,7 @@ export default class UserProfilePage extends React.Component{
                         <Button>Button</Button>
                         </CardBody>
                     </Card>
-                    </Col>
-                    <Col xs="12" lg="4">
+                    </Col><Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
@@ -97,8 +94,7 @@ export default class UserProfilePage extends React.Component{
                         <Button>Button</Button>
                         </CardBody>
                     </Card>
-                    </Col>
-                    <Col xs="12" lg="4">
+                    </Col><Col xs="12" lg="4" className="mt-5">
                     <Card>
                         <CardImg top width="100%" src={profile} alt="Card image cap" />
                         <CardBody>
