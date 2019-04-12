@@ -10,11 +10,9 @@ export default class UserSettingPage extends React.Component{
         return(
             <div>
                 <NavBar />
-                <div className="setting">
                     <div className="InfoSetting">
                         <SettingForm />
                     </div>
-                </div>
             </div>
         )
     }
