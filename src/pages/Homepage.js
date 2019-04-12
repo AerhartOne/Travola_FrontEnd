@@ -19,7 +19,9 @@ export default class Homepage extends React.Component{
                     <div className="App__Aside">
                         
                         <div id="logo">
-                            <img src={ logo } alt="Travola-Logo" width="40%" height="auto" />
+                            <a href="/">
+                                <img src={ logo } alt="Travola-Logo" width="40%" height="auto" />
+                            </a>
                         </div>
                     
                     </div>
