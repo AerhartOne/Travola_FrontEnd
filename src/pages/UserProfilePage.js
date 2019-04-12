@@ -22,8 +22,13 @@ export default class UserProfilePage extends React.Component{
             <NavBar/>
             <Container id="detail-container">
                 <Row>
-                    <Col xs="4" id="image-col">
-                        <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
+                    <Col xs="4" >
+                        <div id="image-col">
+                            <a href="#">
+                            <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
+                            <p className="text">Change Profile Picture</p>
+                            </a>
+                        </div>
                     </Col>
                     <Col xs="8">
                         <h1>User's Profile</h1>

@@ -5,4 +5,26 @@
 
 #image-col{
     margin-top:20px;
+    transition:0.5s;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+#image-col img{
+    transition:0.5s;
+}
+#image-col:hover img{
+    opacity: 0.2;
+}
+#image-col .text{
+    position: absolute;;
+    bottom:80px;
+    left:110px;
+    color:black;
+    visibility: hidden;
+    text-align: center
+}
+
+#image-col:hover .text{
+    visibility:visible;
 }
