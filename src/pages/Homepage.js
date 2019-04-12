@@ -6,7 +6,6 @@ import logo from '../images/travola-logo.png';
 import '../css/homepage.css'
 
 
-
 export default class Homepage extends React.Component{
     render(){
         return(
@@ -22,7 +21,7 @@ export default class Homepage extends React.Component{
                                 <img src={ logo } alt="Travola-Logo" width="40%" height="auto" />
                             </a>
                         </div>
-                    
+                        
                     </div>
 
                     <div className="App__Form">
