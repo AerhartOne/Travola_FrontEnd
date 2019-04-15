@@ -1,7 +1,21 @@
-#container {
-    margin-top:60px;
-}
+
 
 #add-button {
     background-color: #1DB954;
 }
+
+#add_view_trips {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #52C4B9;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    width: 30%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+

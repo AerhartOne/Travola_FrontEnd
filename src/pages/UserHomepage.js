@@ -17,11 +17,11 @@ import defaults from '../images/default-image.png'
 export default class UserHomepage extends React.Component{
     render(){
         return(
-            <>
+            <div className="body-background">
             <NavBar/>
             <Container id="container">
                 <Row>
-                    <Col xs="12" lg="12"><h1>Add/View Trip</h1></Col>
+                    <Col xs="12" lg="12"><h1 id="add_view_trips">Add/View Trip</h1></Col>
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
@@ -44,7 +44,7 @@ export default class UserHomepage extends React.Component{
                     </Col>
                 </Row>
             </Container>
-            </>
+            </div>
         )
     }
 }
