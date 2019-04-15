@@ -67,11 +67,11 @@ export default class NewTripForm extends React.Component{
                             <div className="formfield">
                                 <label className="h4 formfield_label">Country You Are Going</label>
                                 <Select
-                                    className="formfield_input"
                                     options={this.state.options}
                                     value={this.state.value}
                                     onChange = {this.countryChangeHandle}
                                 />
+                                
                             </div>
                             <div className="formfield">
                                 <label className="h4 formfield_label">Duration Of The Trip</label>
