@@ -41,68 +41,82 @@ export default class UserProfilePage extends React.Component{
             <Container>
                 <Row>
                     <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
-                    <Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
                     </Col>
-                    <Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
                     </Col>
-                    <Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
                     </Col>
-                    <Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
-                    </Col><Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    </Col>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
-                    </Col><Col xs="12" lg="4" className="mt-5">
-                    <Card className="shadow">
-                        <CardImg top width="100%" src={profile} alt="Card image cap" />
-                        <CardBody>
-                        <CardTitle>Card title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button>Button</Button>
-                        </CardBody>
+                    </Col>
+                    <Col xs="12" lg="4" className="mt-5 card-container">
+                    <Card className="shadow thecard">
+                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <div className="back">
+                            <CardBody>
+                            <CardTitle>Card title</CardTitle>
+                            <CardSubtitle>Card subtitle</CardSubtitle>
+                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                            <Button>See More</Button>
+                            </CardBody>
+                        </div>
                     </Card>
                     </Col>
                 </Row>
