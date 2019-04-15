@@ -13,9 +13,24 @@ import {
 import '../css/UserHomepage.css'
 import button from '../images/add_button.png'
 import defaults from '../images/default-image.png'
+import NewTripModal from '../containers/NewTripModal'
 
 export default class UserHomepage extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            modal:false
+        }
+    }
+
+    toggle = (e) => {
+        this.setState({
+            modal:!this.state.modal
+        })
+    }
     render(){
+        const {modal} = this.state
         return(
             <div className="body-background">
             <NavBar/>
@@ -35,7 +50,7 @@ export default class UserHomepage extends React.Component{
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
-                                <Button id="add-button" href="/username/dashboard/new">
+                                <Button id="add-button" onClick={this.toggle}>
                                     <CardImg top width="100%" src={button} alt="Card image cap" />
                                     <CardText>Add new trip</CardText>
                                 </Button>
@@ -44,6 +59,7 @@ export default class UserHomepage extends React.Component{
                     </Col>
                 </Row>
             </Container>
+            <NewTripModal modal={modal} toggle={this.toggle}/>
             </div>
         )
     }
