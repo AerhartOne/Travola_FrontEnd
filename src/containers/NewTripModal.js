@@ -40,6 +40,7 @@ export default class NewTripModal extends React.Component{
         e.preventDefault()
         console.log(this.state)
     }
+
     render(){
         const {toggle , modal} = this.props
         return(

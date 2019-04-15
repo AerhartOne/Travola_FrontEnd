@@ -30,6 +30,7 @@ export default class UserHomepage extends React.Component{
         })
     }
     render(){
+        const {modal} = this.state
         return(
             <div className="body-background">
             <NavBar/>
@@ -58,7 +59,7 @@ export default class UserHomepage extends React.Component{
                     </Col>
                 </Row>
             </Container>
-            <NewTripModal modal={this.state.modal} toggle={this.toggle}/>
+            <NewTripModal modal={modal} toggle={this.toggle}/>
             </div>
         )
     }
