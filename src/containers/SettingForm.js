@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { 
+        Container,
+        Row,
+        Col,
+} from 'reactstrap'
+import '../css/UserSetting.css'
+import countryList from 'react-select-country-list'
+import Select from 'react-select'
 
 
-class SettingForm extends Component {
-    constructor() {
-        super ();
+
+class SettingForm extends React.Component {
+    constructor(props) {
+        super (props);
 
         this.state = {
-            name: '',
+            first_name: '',
+            last_name: '',
             username: '',
             password: ''
         };
@@ -36,35 +45,41 @@ class SettingForm extends Component {
 
     render() {
         return (
-            
-            <div className="SettingCenter">
-                
-                <form onSubmit={this.handleSubmit} className="SettingFields" onSubmit={this.handleSubmit}>
-                    
-                    <div className="SettingField">
-                        <label className="SettingField_Lable" htmlFor="Name">Change Name</label>
-                        <input type="name" id="name" className="SettingField__Input" placeholder="Enter your new name" name="name" value={this.state.name} onChange={this.handleChange} />
-                    </div>
+            <div className="setting-container">
+                <Container>
+                    <Row>
+                        <Col>
+                            <form className="setting-box " onSubmit={this.handleSubmit} id="details">
+                                <h1 className="title">Update Basic Information</h1>
 
-                    <div className="SettingField">
-                        <label className="SettingField_Lable" htmlFor="Username">Change Username</label>
-                        <input type="name" id="username" className="SettingField__Input" placeholder="Enter your new username" name="username" value={this.state.username} 
-                        onChange={this.handleChange} />
-                    </div>
+                                <div className="formfield">
+                                    <label className="formfield_label h4">First Name</label>
+                                    <input type="text" name="first_name" className="formfield_input" placeholder="Enter your new first name" value={this.state.first_name} onChange={this.handleChange} />
+                                </div>
 
-                    <div className="SettingField">
-                        <label className="SettingField_Lable" htmlFor="Password">Change Password</label>
-                        <input type="password" id="password" className="SettingField__Input" placeholder="Enter your new password" name="password" value={this.state.password} 
-                        onChange={this.handleChange} />
-                    </div>
+                                <div className="formfield">
+                                    <label className="formfield_label h4">Last Name</label>
+                                    <input type="text" name="last_name" className="formfield_input" placeholder="Enter your new last name" value={this.state.last_name} onChange={this.handleChange} />
+                                </div>
 
-                    <div className="SettingField">
-                        <button className="SettingField__Button mr-20">Update</button>
-                    </div>
+                                <div className="formfield">
+                                    <label className="formfield_label h4">Username</label>
+                                    <input type="text" name="username" className="formfield_input" placeholder="Enter your new username" value={this.state.username} onChange={this.handleChange} />
+                                </div>
 
-                </form>
+                                <div clasName="formfield">
+                                    <label className="formfield_label h4">Password</label>
+                                    <input type="password" name="password" className="formfield_input" placeholder="Enter your new password" value={this.state.password} onChange={this.handleChange} />
+                                </div>
 
+                                <button type="submit" className="settingfield_button">Update</button>
+
+                            </form>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
+
         )
     }
 }
