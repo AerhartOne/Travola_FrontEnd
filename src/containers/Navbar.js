@@ -10,7 +10,6 @@ import {
     DropdownMenu,
     DropdownItem
         } from 'reactstrap';
-import "../css/Navbar.css";
 import logo from '../images/travola-logo.png';
 import profile from '../images/anonymous-user.png'
 
@@ -18,7 +17,7 @@ export default class NavBar extends React.Component{
     render(){
         return(
             <>
-                {/* <Navbar className="fixed-top navcolor" color="light" light expand="md">
+                <Navbar className="fixed-top" color="light" light expand="md">
                     <NavbarBrand href="/username"><img src={ logo } alt="travola logo" width="20%"/></NavbarBrand>
                     <Nav className="ml-auto mr-2"navbar>
                     <UncontrolledDropdown nav inNavbar>
@@ -42,22 +41,7 @@ export default class NavBar extends React.Component{
                         </DropdownMenu>
                     </UncontrolledDropdown>
                     </Nav>
-                </Navbar> */}
-                <div className="header">
-                
-                    <div id="container">
-                        <img src = { logo } alt="logo" width="20%"/>
-
-                        <nav>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Home</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                </Navbar>
             </>
         )
     }
