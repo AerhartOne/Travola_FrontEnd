@@ -61,6 +61,7 @@ export default class UserDetailsForm extends React.Component{
                             <div className="formfield">
                                 <label className="formfield_label h4">Gender</label>
                                 <select name="gender" className="formfield_select" onChange={this.handleChange} form="details">
+                                    <option>--Select--</option>
                                     <option name="gender" value="Male">Male</option>
                                     <option name="gender" value="Female">Female</option>
                                 </select>
