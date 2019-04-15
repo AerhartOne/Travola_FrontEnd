@@ -22,7 +22,8 @@ export default class NewTripModal extends React.Component{
         this.state={
             options:this.options,
             value:null,
-            name:""
+            name:"",
+            filename:""
         }
     }
 
@@ -33,6 +34,12 @@ export default class NewTripModal extends React.Component{
     handleTrip = (e) => {
         this.setState({
             name:e.target.value
+        })
+    }
+
+    handleFile = (e) => {
+        this.setState({
+            filename:e.target.value
         })
     }
 
@@ -61,8 +68,10 @@ export default class NewTripModal extends React.Component{
                             onChange = {this.handleCountryChange}
                         />
                     </FormGroup>
-                
-            
+                    <FormGroup>
+                        <Label>Upload an image</Label>
+                        <Input onChange={this.handleFile} type="file"/>
+                    </FormGroup>
             <ModalFooter><Button type="submit" color="primary" block>Submit</Button></ModalFooter>
             </Form>
             </ModalBody>
