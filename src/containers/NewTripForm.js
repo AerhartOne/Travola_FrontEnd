@@ -4,11 +4,7 @@ import {
     Container,
     Row,
     Col,
-    Form, 
-    FormGroup, 
-    Label, 
     Input, 
-    Button
 
 }from 'reactstrap'
 import countryList from 'react-select-country-list'
@@ -59,50 +55,52 @@ export default class NewTripForm extends React.Component{
         return(
             <>
             <NavBar/>
+            <div className="bodybackground">
             <Container id="container">
                 <Row>
                     <Col>
-                        <Form onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Label className="h4">Trip Name</Label>
-                                <Input onChange={this.handleTripName}placeholder="Enter your trip name"/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label className="h4">Country You Are Going</Label>
+                        <form onSubmit={this.handleSubmit} className="form_fields">
+                            <div className="formfield">
+                                <label className="formfield_label h4">Trip Name</label>
+                                <input className="formfield_input"onChange={this.handleTripName}placeholder="Enter your trip name"/>
+                            </div>
+                            <div className="formfield">
+                                <label className="h4 formfield_label">Country You Are Going</label>
                                 <Select
                                     options={this.state.options}
                                     value={this.state.value}
                                     onChange = {this.countryChangeHandle}
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label className="h4">Duration Of The Trip</Label>
-                            </FormGroup>
+                            </div>
+                            <div className="formfield">
+                                <label className="h4 formfield_label">Duration Of The Trip</label>
+                            </div>
                             <Row form>
                                 <Col md={6}>
-                                <FormGroup>
-                                    <Label className="h5">From</Label>
+                                <div className="formfield">
+                                    <label className="h5 formfield_label">From</label>
                                     <Input
                                         type="date"
                                         onChange={this.handleDateFrom}
                                     />
-                                </FormGroup>
+                                </div>
                                 </Col>
                                 <Col md={6}>
-                                <FormGroup>
-                                    <Label className="h5">To</Label>
+                                <div className="formfield">
+                                    <label className="h5 formfield_label">To</label>
                                     <Input
                                         type="date"
                                         onchange={this.handleDateTo}
                                     />
-                                </FormGroup>
+                                </div>
                                 </Col>
                             </Row>
-                            <Button type="submit" color="primary">Submit</Button>
-                        </Form>
+                            <button type="submit" className="formfield_button">Submit</button>
+                        </form>
                     </Col>
                 </Row>
             </Container>
+            </div>
             </>
         )
     }
