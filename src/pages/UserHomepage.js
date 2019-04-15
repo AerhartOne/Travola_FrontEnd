@@ -12,7 +12,7 @@ import {
     } from 'reactstrap'
 import '../css/UserHomepage.css'
 import button from '../images/add_button.png'
-import random from '../images/anonymous-user.png'
+import defaults from '../images/default-image.png'
 
 export default class UserHomepage extends React.Component{
     render(){
@@ -26,7 +26,7 @@ export default class UserHomepage extends React.Component{
                         <Card className="shadow">
                             <CardBody>
                                 <Button href="/username/dashboard">
-                                    <CardImg top width="100%" src={random} alt="Card image cap" />
+                                    <CardImg top width="100%" src={defaults} alt="Card image cap" />
                                     <CardText>Trip's name</CardText>
                                 </Button>
                             </CardBody>
