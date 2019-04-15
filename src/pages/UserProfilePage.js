@@ -14,20 +14,19 @@ import {
         } from 'reactstrap'
 import '../css/userProfilePage.css'
 import profile from '../images/anonymous-user.png'
+import defaults from '../images/default-image.png'
 
 export default class UserProfilePage extends React.Component{
     render(){
         return(
-            <>
+            <div className="body-background">
             <NavBar/>
             <Container id="detail-container">
                 <Row>
                     <Col xs="12" lg="4" >
                         <div id="image-col">
-                            <a href="#">
                             <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
-                            <p className="text">Change Profile Picture</p>
-                            </a>
+                            <p className="text d-flex justify-content-center">Change Profile Picture</p>
                         </div>
                     </Col>
                     <Col xs="12" lg="8">
@@ -43,85 +42,92 @@ export default class UserProfilePage extends React.Component{
                     <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
+                        
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
                     <Card className="shadow thecard">
-                        <CardImg src={profile} alt="Card image cap" className="front"/>
+                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
                         <div className="back">
                             <CardBody>
                             <CardTitle>Card title</CardTitle>
                             <CardSubtitle>Card subtitle</CardSubtitle>
                             <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>See More</Button>
+                            <button className="see-more-button">See More</button>
                             </CardBody>
                         </div>
                     </Card>
                     </Col>
                 </Row>
             </Container>
-            </>
+            </div>
         )
     }
 }

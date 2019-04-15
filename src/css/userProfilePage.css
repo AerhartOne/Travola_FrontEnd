@@ -59,5 +59,27 @@
     height: 100%;
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    background-color: #3fb0ac;
+    color:white;
 }
 
+.cardtext{
+    font-size: 2em;
+    top:85%;
+}
+
+.body-background{
+    height:200vh;
+    background-color: #fae596;
+}
+
+.see-more-button {
+    background-color: #52C4B9;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding: 15px 70px;
+    font-size: .8em;
+    font-weight: 500;
+}
