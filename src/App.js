@@ -9,6 +9,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import UserSettingPage from './pages/UserSettingPage';
 import TripDashboard from './pages/TripDashboard';
 import NewTripForm from './containers/NewTripForm';
+import UserDetailsForm from './containers/UserDetailsForm'
 
 
 
@@ -66,6 +67,15 @@ class App extends Component {
             component = {props => {
               return (
                 <NewTripForm
+                {...props}
+                />
+              )
+            }}
+            />
+            <Route exact strict path = "/new"
+            component = {props => {
+              return (
+                <UserDetailsForm
                 {...props}
                 />
               )

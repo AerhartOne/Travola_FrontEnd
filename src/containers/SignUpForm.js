@@ -60,7 +60,7 @@ class SignUpForm extends Component {
                         </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+                        <a href="/new" className="FormField__Button mr-20">Sign Up</a> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
                     </div>
 
                 </form>
