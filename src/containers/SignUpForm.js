@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 class SignUpForm extends Component {
     constructor() {
@@ -9,7 +10,9 @@ class SignUpForm extends Component {
             email: '',
             password: '',
             username: '',
-            hasAgreed: false
+            hasAgreed: false,
+            first_name:"",
+            last_name:""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,16 +34,38 @@ class SignUpForm extends Component {
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
+
+        axios({
+            method:"POST",
+            url:"http://localhost:5000/api/v1/users/",
+            data:{
+                email:this.state.email,
+                password:this.state.password,
+                username:this.state.username,
+                first_name:this.state.first_name,
+                last_name:this.state.last_name
+            }
+        })
+        
     }
 
     render() {
         return (
             <div className="FormCenter">
                 <form onSubmit={this.handleSubmit} className="FormFields">
+                    <div className="FormField">
+                        <label className="FormField__Label" htmlFor="name">First Name</label>
+                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
+                    </div>
+
+                    <div className="FormField">
+                        <label className="FormField__Label" htmlFor="name">Last Name</label>
+                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
+                    </div>
                     
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="name">Username</label>
-                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="name" value={this.state.name} onChange={this.handleChange} />
+                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="username" value={this.state.name} onChange={this.handleChange} />
                     </div>
                     
                     <div className="FormField">
@@ -60,7 +85,7 @@ class SignUpForm extends Component {
                         </div>
 
                     <div className="FormField">
-                        <a href="/new" className="FormField__Button mr-20">Sign Up</a> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+                        <button type="submit" className="FormField__Button mr-20" href="/new">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
                     </div>
 
                 </form>

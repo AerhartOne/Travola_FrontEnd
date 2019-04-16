@@ -49,6 +49,7 @@ export default class NewTripModal extends React.Component{
     }
 
     render(){
+        const { name, value, filename } = this.state
         const {toggle , modal} = this.props
         return(
             <>
@@ -61,7 +62,7 @@ export default class NewTripModal extends React.Component{
                         <Input onChange={this.handleTrip}/>
                     </FormGroup>
                     <FormGroup>
-                        <Label>Country</Label>
+                        <Label>Country You Are Going</Label>
                         <Select
                             options={this.state.options}
                             value={this.state.value}
@@ -72,7 +73,11 @@ export default class NewTripModal extends React.Component{
                         <Label>Upload an image</Label>
                         <Input onChange={this.handleFile} type="file"/>
                     </FormGroup>
-            <ModalFooter><Button type="submit" color="primary" block>Submit</Button></ModalFooter>
+            <ModalFooter>
+                {name && value && filename ?
+                <Button type="submit" color="primary" block>Submit</Button>:
+                <Button block disabled color="primary">Submit</Button>}
+            </ModalFooter>
             </Form>
             </ModalBody>
             </Modal>
