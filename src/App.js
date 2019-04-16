@@ -10,7 +10,8 @@ import UserSettingPage from './pages/UserSettingPage';
 import TripDashboard from './pages/TripDashboard';
 import NewTripForm from './containers/NewTripForm';
 import UserDetailsForm from './containers/UserDetailsForm'
-
+import SignInForm from './containers/SignInForm';
+import SignUpForm from './containers/SignUpForm';
 
 
 class App extends Component {
@@ -23,10 +24,23 @@ class App extends Component {
               return (
                 <Homepage
                 {...props}
-                />
+                >
+                  <SignUpForm/>    
+                </Homepage>
               )
             }}
             />
+          <Route exact strict path="/sign-in"
+            component = {props => {
+              return (
+                <Homepage
+                {...props}
+                >
+                  <SignInForm/>     
+                </Homepage>
+              )
+            }}
+          />
           <Route exact strict path = "/username"
             component = {props => {
               return (
@@ -81,6 +95,7 @@ class App extends Component {
               )
             }}
             />
+            
         </Router>
       </>
     );
