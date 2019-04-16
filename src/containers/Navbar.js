@@ -12,10 +12,27 @@ import {
         } from 'reactstrap';
 import logo from '../images/travola-logo.png';
 import profile from '../images/anonymous-user.png'
+import { Redirect } from 'react-router-dom'
 
 export default class NavBar extends React.Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+            isLogOut:false,
+        }
+    }
+
+    logOut = (e) =>{
+        localStorage.removeItem('id')
+        this.setState({
+            isLogOut:true,
+        })
+    }
     render(){
-        return(
+        return this.state.isLogOut?(
+            <Redirect push to="/"/>
+        ) : (
             <>
                 <Navbar className="fixed-top" color="light" light expand="md">
                     <NavbarBrand><a href="/username"><img src={ logo } alt="travola logo" width="20%"/></a></NavbarBrand>
@@ -35,7 +52,7 @@ export default class NavBar extends React.Component{
                             Account Setting
                         </DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>
+                        <DropdownItem onClick={this.logOut}>
                             Logout
                         </DropdownItem>
                         </DropdownMenu>
@@ -43,6 +60,6 @@ export default class NavBar extends React.Component{
                     </Nav>
                 </Navbar>
             </>
-        )
+        );
     }
 }
