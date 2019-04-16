@@ -34,17 +34,18 @@ class SignUpForm extends Component {
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
-
+        let formData = new FormData()
+        formData.set('email', this.state.email)
+        formData.set("password", this.state.password)
+        formData.set("re_password", this.state.password)
+        formData.set("username", this.state.username)
+        formData.set("first_name", this.state.first_name)
+        formData.set("last_name", this.state.last_name)
         axios({
             method:"POST",
             url:"http://localhost:5000/api/v1/users/",
-            data:{
-                email:this.state.email,
-                password:this.state.password,
-                username:this.state.username,
-                first_name:this.state.first_name,
-                last_name:this.state.last_name
-            }
+            data:formData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
         
     }
