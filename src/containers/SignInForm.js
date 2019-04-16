@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Route, Redirect } from 'react-router'
+
 
 class SignInForm extends Component {
     constructor() {
@@ -8,7 +10,8 @@ class SignInForm extends Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            login:false,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,7 +35,7 @@ class SignInForm extends Component {
         console.log(this.state);
         let formData = new FormData()
         formData.set("username", this.state.username)
-        formData.set("password", this.state.username)
+        formData.set("password", this.state.password)
         
         axios({
             method:"POST",
@@ -40,10 +43,25 @@ class SignInForm extends Component {
             data:formData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
+        .then(result =>{
+            if(result.status === 200){
+                console.log(result.data)
+                this.setState({
+                    login:true
+                })
+            }
+            
+        })
+        .catch(error =>{
+            console.log(error.response)
+            alert("Unsuccessful login")
+        })
     }
 
     render() {
-        return (
+        return this.state.login ? (
+            <Redirect push to="/username"/>
+        ) : (
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" >
                 <div className="FormField">
