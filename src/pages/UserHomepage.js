@@ -21,6 +21,7 @@ export default class UserHomepage extends React.Component{
 
         this.state = {
             modal:false
+            
         }
     }
 
@@ -29,6 +30,8 @@ export default class UserHomepage extends React.Component{
             modal:!this.state.modal
         })
     }
+
+
     render(){
         const {modal} = this.state
         return(

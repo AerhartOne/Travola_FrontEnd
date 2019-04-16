@@ -12,9 +12,19 @@ import NewTripForm from './containers/NewTripForm';
 import UserDetailsForm from './containers/UserDetailsForm'
 import SignInForm from './containers/SignInForm';
 import SignUpForm from './containers/SignUpForm';
+import NavBar from './containers/Navbar'
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state={
+      
+    }
+  }
+  
+  
   render() {
     return (
       <>
@@ -41,7 +51,7 @@ class App extends Component {
               )
             }}
           />
-          <Route exact strict path = "/username"
+          <Route exact strict path = "/user/:username"
             component = {props => {
               return (
                 <UserHomepage

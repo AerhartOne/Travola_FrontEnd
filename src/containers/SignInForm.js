@@ -43,12 +43,17 @@ class SignInForm extends Component {
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
         .then(result =>{
-            if(result.status === 200){
+            if(result.data.status === true){
                 console.log(result.data.data)
+                console.log(result.data.status)
                 this.setState({
                     login:true,
                     current_user:result.data.data.username
+                    
                 })
+                localStorage.setItem('id', result.data.data.id)
+            }else{
+                alert("Wrong username or password")
             }
             
         })
@@ -60,7 +65,7 @@ class SignInForm extends Component {
 
     render() {
         return this.state.login ? (
-            <Redirect push to={"/" + this.state.current_user}/>
+            <Redirect push to={"/user/" +this.state.current_user}/>
         ) : (
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" >
