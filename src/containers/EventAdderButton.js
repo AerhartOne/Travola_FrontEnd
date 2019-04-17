@@ -33,9 +33,11 @@ toggle() {
         return (
             <div>
                 
-                <div className="addevent-btn">
-                    <i onClick={this.toggle} class="fas fa-plus-circle">{this.props.buttonLabel}</i>
+                <div className="AddEventButton">
+                    {/* <i onClick={this.toggle} class="fas fa-plus-circle">{this.props.buttonLabel}</i> */}
+                    <Button onClick={this.toggle} color="success">Add event</Button>
                 </div> 
+
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>New Event</ModalHeader>
                     
