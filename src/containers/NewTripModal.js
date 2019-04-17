@@ -38,7 +38,6 @@ export default class NewTripModal extends React.Component{
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
         console.log(this.state)
         let formData = new FormData()
         formData.set('trip_name',this.state.name)

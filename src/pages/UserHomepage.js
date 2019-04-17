@@ -56,7 +56,7 @@ export default class UserHomepage extends React.Component{
                     <Col xs="12" lg="12"><h1 id="add_view_trips">Add/View Trip</h1></Col>
                     {
                         trips.map(trip =>
-                            <Col xs="12" lg="4" className="mt-5">
+                            <Col xs="12" lg="4" className="mt-5" key={trip.id}>
                                 <Card className="shadow">
                                     <CardBody>
                                         <Button href={"/user/"+username+"/"+trip.trip_name}>
