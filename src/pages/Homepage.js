@@ -1,7 +1,6 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import logo from '../images/travola-logo.png';
-import '../css/homepage.css'
 
 
 export default class Homepage extends React.Component{
