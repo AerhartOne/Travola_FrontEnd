@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../containers/Navbar'
-import Bar from '../containers/Bar'
+import SideBar from '../containers/SideBar'
 import EventAdderButton from '../containers/EventAdderButton'
 
 import '../css/dashboard.css'
@@ -12,7 +12,7 @@ export default class TripDashboard extends React.Component{
             
             <NavBar/>
             
-            <Bar/>
+            <SideBar/>
 
             <EventAdderButton/>
             
