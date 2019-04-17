@@ -14,17 +14,26 @@ import '../css/UserHomepage.css'
 import button from '../images/add_button.png'
 import defaults from '../images/default-image.png'
 import NewTripModal from '../containers/NewTripModal'
+import axios from 'axios'
 
 export default class UserHomepage extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            modal:false
-            
+            modal:false,
+            username:""
         }
     }
 
+    componentDidMount(){
+        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
+            .then(result=>{
+                this.setState({
+                    username:result.data.data.username
+                })
+            })
+    }
     toggle = (e) => {
         this.setState({
             modal:!this.state.modal
@@ -43,7 +52,7 @@ export default class UserHomepage extends React.Component{
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
-                                <Button href="/username/dashboard">
+                                <Button href={"/user/"+this.state.username+"/dashboard"}>
                                     <CardImg top width="100%" src={defaults} alt="Card image cap" />
                                     <CardText>Trip's name</CardText>
                                 </Button>

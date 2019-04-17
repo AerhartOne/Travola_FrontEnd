@@ -60,7 +60,7 @@ class App extends Component {
               )
             }}
             />
-            <Route exact strict path = "/username/profile"
+            <Route exact strict path = "/user/:username/profile"
             component = {props => {
               return (
                 <UserProfilePage
@@ -69,7 +69,7 @@ class App extends Component {
               )
             }}
             />
-            <Route exact strict path = "/username/setting"
+            <Route exact strict path = "/user/:username/setting"
             component = {props => {
               return (
                 <UserSettingPage
@@ -78,7 +78,7 @@ class App extends Component {
               )
             }}
             />
-            <Route exact strict path = "/username/dashboard"
+            <Route exact strict path = "/user/:username/dashboard"
             component = {props => {
               return (
                 <TripDashboard
@@ -87,25 +87,6 @@ class App extends Component {
               )
             }}
             />
-            <Route exact strict path = "/username/dashboard/new"
-            component = {props => {
-              return (
-                <NewTripForm
-                {...props}
-                />
-              )
-            }}
-            />
-            <Route exact strict path = "/new"
-            component = {props => {
-              return (
-                <UserDetailsForm
-                {...props}
-                />
-              )
-            }}
-            />
-            
         </Router>
       </>
     );
