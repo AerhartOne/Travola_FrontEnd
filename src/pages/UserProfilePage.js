@@ -29,8 +29,6 @@ export default class UserProfilePage extends React.Component{
     componentDidMount(){
         axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
             .then(result=>{
-                console.log(result.data)
-                console.log(this.props.current_user_id)
                 this.setState({
                     username:result.data.data.username
                 })
