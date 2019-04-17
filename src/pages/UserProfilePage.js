@@ -22,7 +22,9 @@ export default class UserProfilePage extends React.Component{
         super(props)
 
         this.state = {
-            username:""
+            username:"",
+            first_name:"",
+            last_name:""
         }
     }
 
@@ -30,11 +32,14 @@ export default class UserProfilePage extends React.Component{
         axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
             .then(result=>{
                 this.setState({
-                    username:result.data.data.username
+                    username:result.data.data.username,
+                    first_name:result.data.data.first_name,
+                    last_name:result.data.data.last_name
                 })
             })
     }
     render(){
+        const { username , first_name , last_name } = this.state
         return(
             <div className="body-background">
             <NavBar/>
@@ -47,8 +52,8 @@ export default class UserProfilePage extends React.Component{
                         </div>
                     </Col>
                     <Col xs="12" lg="8">
-                        <h1>User's Profile</h1>
-                        <h3>@{this.state.username}</h3>
+                        <h1>{first_name+last_name}'s Profile</h1>
+                        <h3>@{username}</h3>
                         <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</h5>
                     </Col>
                 </Row>

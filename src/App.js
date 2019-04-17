@@ -78,7 +78,7 @@ class App extends Component {
               )
             }}
             />
-            <Route exact strict path = "/user/:username/dashboard"
+            <Route exact strict path = "/user/:username/:trip_name"
             component = {props => {
               return (
                 <TripDashboard

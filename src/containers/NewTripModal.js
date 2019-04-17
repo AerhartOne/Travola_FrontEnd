@@ -10,26 +10,20 @@ import {
         ModalFooter,
         Button
     } from 'reactstrap'
-import countryList from 'react-select-country-list'
-import Select from 'react-select'
+import axios from 'axios'
 
 export default class NewTripModal extends React.Component{
     constructor(props){
         super(props)
 
-        this.options = countryList().getData()
 
         this.state={
-            options:this.options,
-            value:null,
             name:"",
-            filename:""
+            
         }
     }
 
-    handleCountryChange = (value) => {
-        this.setState({value})
-    }
+
 
     handleTrip = (e) => {
         this.setState({
@@ -46,10 +40,19 @@ export default class NewTripModal extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)
+        let formData = new FormData()
+        formData.set('trip_name',this.state.name)
+        formData.set('user_id',localStorage.getItem('id'))
+        axios({
+            method:"POST",
+            url:"http://localhost:5000/api/v1/trips/new",
+            data:formData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
     }
 
     render(){
-        const { name, value, filename } = this.state
+        const { name, filename } = this.state
         const {toggle , modal} = this.props
         return(
             <>
@@ -61,22 +64,15 @@ export default class NewTripModal extends React.Component{
                         <Label>Trip Name</Label>
                         <Input onChange={this.handleTrip}/>
                     </FormGroup>
-                    <FormGroup>
-                        <Label>Country You Are Going</Label>
-                        <Select
-                            options={this.state.options}
-                            value={this.state.value}
-                            onChange = {this.handleCountryChange}
-                        />
-                    </FormGroup>
-                    <FormGroup>
+                    {/* <FormGroup>
                         <Label>Upload an image</Label>
                         <Input onChange={this.handleFile} type="file"/>
-                    </FormGroup>
+                    </FormGroup> */}
             <ModalFooter>
-                {name && value && filename ?
+                {/* {name && filename ?
                 <Button type="submit" color="primary" block>Submit</Button>:
-                <Button block disabled color="primary">Submit</Button>}
+                <Button block disabled color="primary">Submit</Button>} */}
+                <Button type="submit" color="primary" block onClick={toggle}>Submit</Button>
             </ModalFooter>
             </Form>
             </ModalBody>
