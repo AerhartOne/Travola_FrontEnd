@@ -22,17 +22,22 @@ export default class UserHomepage extends React.Component{
 
         this.state = {
             modal:false,
-            username:""
+            username:"",
+            trips:[]
         }
     }
 
     componentDidMount(){
-        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
-            .then(result=>{
-                this.setState({
-                    username:result.data.data.username
-                })
+        Promise.all([
+            axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')),
+            axios.get("http://localhost:5000/api/v1/trips/")
+        ])
+        .then((results) =>{
+            this.setState({
+                username:results[0].data.data.username,
+                trips:results[1].data.data.filter(u => u.parent_user === results[0].data.data.id)
             })
+        })
     }
     toggle = (e) => {
         this.setState({
@@ -42,23 +47,27 @@ export default class UserHomepage extends React.Component{
 
 
     render(){
-        const {modal} = this.state
+        const {modal,trips,username} = this.state
         return(
             <div className="body-background">
             <NavBar/>
             <Container id="container">
                 <Row>
                     <Col xs="12" lg="12"><h1 id="add_view_trips">Add/View Trip</h1></Col>
-                    <Col xs="12" lg="4" className="mt-5">
-                        <Card className="shadow">
-                            <CardBody>
-                                <Button href={"/user/"+this.state.username+"/dashboard"}>
-                                    <CardImg top width="100%" src={defaults} alt="Card image cap" />
-                                    <CardText>Trip's name</CardText>
-                                </Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
+                    {
+                        trips.map(trip =>
+                            <Col xs="12" lg="4" className="mt-5">
+                                <Card className="shadow">
+                                    <CardBody>
+                                        <Button href={"/user/"+username+"/"+trip.trip_name}>
+                                            <CardImg top width="100%" src={defaults} alt="Card image cap" />
+                                            <CardText>{trip.trip_name}</CardText>
+                                        </Button>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                            )
+                    }
                     <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
