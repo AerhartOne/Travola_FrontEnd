@@ -15,6 +15,7 @@ import button from '../images/add_button.png'
 import defaults from '../images/default-image.png'
 import NewTripModal from '../containers/NewTripModal'
 import axios from 'axios'
+import Loader from '../components/Loader'
 
 export default class UserHomepage extends React.Component{
     constructor(props){
@@ -23,7 +24,8 @@ export default class UserHomepage extends React.Component{
         this.state = {
             modal:false,
             username:"",
-            trips:[]
+            trips:[],
+            isLoading:true
         }
     }
 
@@ -35,7 +37,8 @@ export default class UserHomepage extends React.Component{
         .then((results) =>{
             this.setState({
                 username:results[0].data.data.username,
-                trips:results[1].data.data.filter(u => u.parent_user === results[0].data.data.id)
+                trips:results[1].data.data.filter(u => u.parent_user === results[0].data.data.id),
+                isLoading:false
             })
         })
     }
@@ -47,19 +50,22 @@ export default class UserHomepage extends React.Component{
 
 
     render(){
-        const {modal,trips,username} = this.state
+        const {modal,trips,username,isLoading} = this.state
         return(
             <div className="body-background">
             <NavBar/>
             <Container id="container">
                 <Row>
-                    <Col xs="12" lg="12"><h1 id="add_view_trips">Add/View Trip</h1></Col>
+                    <Col xs="12" lg="12"><button className="h1" id="add_view_trips" onClick={this.toggle}>Add/View Trip</button></Col>
+                    {
+                        isLoading ? <Loader/>:null
+                    }
                     {
                         trips.map(trip =>
                             <Col xs="12" lg="4" className="mt-5" key={trip.id}>
                                 <Card className="shadow">
                                     <CardBody>
-                                        <Button href={"/user/"+username+"/"+trip.trip_name}>
+                                        <Button href={"/user/"+username+"/dashboard/"+trip.trip_name}>
                                             <CardImg top width="100%" src={defaults} alt="Card image cap" />
                                             <CardText>{trip.trip_name}</CardText>
                                         </Button>
@@ -68,7 +74,7 @@ export default class UserHomepage extends React.Component{
                             </Col>
                             )
                     }
-                    <Col xs="12" lg="4" className="mt-5">
+                    {/* <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
                             <CardBody>
                                 <Button id="add-button" onClick={this.toggle}>
@@ -77,7 +83,7 @@ export default class UserHomepage extends React.Component{
                                 </Button>
                             </CardBody>
                         </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
             <NewTripModal modal={modal} toggle={this.toggle}/>
