@@ -59,7 +59,7 @@ export default class UserHomepage extends React.Component{
                             <Col xs="12" lg="4" className="mt-5" key={trip.id}>
                                 <Card className="shadow">
                                     <CardBody>
-                                        <Button href={"/user/"+username+"/"+trip.trip_name}>
+                                        <Button href={"/user/"+username+"/dashboard/"+trip.trip_name}>
                                             <CardImg top width="100%" src={defaults} alt="Card image cap" />
                                             <CardText>{trip.trip_name}</CardText>
                                         </Button>
