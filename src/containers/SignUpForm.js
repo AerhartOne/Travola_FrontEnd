@@ -62,47 +62,57 @@ class SignUpForm extends Component {
             return (<Redirect to="/sign-in"/>)
         }
         return (
-            <div className="FormCenter">
+            <div className="FormCenter container-fluid mx-0 my-0 px-3 py-0">
                 <form onSubmit={this.handleSubmit} className="FormFields">
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="name">First Name</label>
-                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
+
+                    <div className="row FormField">
+                        {/* <label className="FormField__Label" htmlFor="name">Username</label> */}
+                        <input type="text" id="name" className="FormField__Input w-100" placeholder="Username" name="username" value={this.state.name} onChange={this.handleChange} />
+                    </div>
+                    
+                    <div className="row FormField">
+                        {/* <label className="FormField__Label" htmlFor="email">Email</label> */}
+                        <input type="email" id="email" className="FormField__Input w-100" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </div>
 
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="name">Last Name</label>
-                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
+                    <div className="row FormField">
+                        {/* <label className="FormField__Label" htmlFor="password">Password</label> */}
+                        <input type="password" id="password" className="FormField__Input w-100" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
                     </div>
                     
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="name">Username</label>
-                        <input type="text" id="name" className="FormField__Input" placeholder="Enter Your Username" name="username" value={this.state.name} onChange={this.handleChange} />
-                    </div>
-                    
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="password">Password</label>
-                        <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </div>
-                    
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
-                    </div>
 
-                    <div className="FormField">
-                        <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="#" className="FormField__TermsLink">terms of service</a>
-                        </label>
+                    <div className="row d-flex justify-content-center">
+                        <div className="FormField w-50 d-flex justify-content-center">
+                            {/* <label className="FormField__Label" htmlFor="name">First Name</label> */}
+                            <input type="text" id="name" className="FormField__Input mr-3 w-100" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
                         </div>
 
-                    {email && password && username && hasAgreed && first_name && last_name ?
-                        <div className="FormField">
-                            <button type="submit" className="FormField__Button mr-20" href="/sign-in">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
-                        </div> :
-                        <div className="FormField">
-                            <button type="submit"  disabled className="FormField__Button mr-20" href="/sign-in">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
-                        </div> 
-                    }
+                        <div className="FormField w-50 d-flex justify-content-center">
+                            {/* <label className="FormField__Label" htmlFor="name">Last Name</label> */}
+                            <input type="text" id="name" className="FormField__Input w-100" placeholder="Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
+                        </div>
+                    </div>
+
+                    <div className="row FormField d-flex justify-content-center">
+                        <label className="FormField__CheckboxLabel">
+                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I understand and agree to all terms and conditions in the <a href="#" className="inline-link">Terms of Service</a>.
+                        </label>
+                    </div>
+
+                        <div className="row FormField d-flex justify-content-center">
+                        { email && password && username && hasAgreed && first_name && last_name ?
+                            <React.Fragment>
+                                <button type="submit" className="FormField__Button w-100" href="/sign-in">Sign Up</button>
+                            </React.Fragment>
+                        :
+                            <React.Fragment>
+                                <button type="submit"  disabled className="FormField__Button w-100" href="/sign-in">Sign Up</button>
+                            </React.Fragment>
+                        }
+                        </div>
+                        <div className="row d-flex justify-content-center">
+                            <Link to="/sign-in" className="inline-link">Already have an account?</Link>
+                        </div>
 
                 </form>
 

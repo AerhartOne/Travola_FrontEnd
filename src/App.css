@@ -1,4 +1,17 @@
 /* landing homepage css */
+
+.inline-link {
+    color: white;
+    text-decoration: none;
+    display: inline;
+    border-bottom: 1.5px solid #225E62;
+    transition: all 0.25s;
+}
+
+.inline-link:hover {
+    color: #fae596;
+}
+
 .App {
     height: 100vh;
     display: flex;
@@ -55,20 +68,25 @@
 }
 
 .FormTitle {
-    color: #707C8B;
+    color: rgb(230, 230, 240);
     font-weight: 300;
     margin-bottom: 50px;
 }
 
 .FormTitle__Link {
-    color: #707C8B;
+    color: rgb(200, 200, 220);
     text-decoration: none;
     display: inline-block;
     font-size: 1.7em;
     margin: 0 10px;
     padding-bottom: 5px;
+    transition: all 0.25s;
 }
 
+.FormTitle__Link:hover {
+    color: white;
+    text-decoration: none;
+}
 .FormTitle__Link:first-child {
     margin-left: 0;
 }
@@ -103,7 +121,7 @@
 }
 
 .FormField__Input::placeholder {
-    color: #616E7F;
+    color: rgb(230, 230, 240);
 }
 
 .FormField__Button {
@@ -113,21 +131,24 @@
     outline: none;
     border-radius: 25px;
     padding: 15px 70px;
-    font-size: .8em;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .FormField__Link {
-    color: #66707D;
+    color: white;
     text-decoration: none;
     display: inline-block;
     border-bottom: 1.5px solid #225E62;
     padding-bottom: 5px;
+    transition: all 0.25s;
 }
 
+
+
 .FormField__CheckboxLabel {
-    color: #646F7D;
-    font-size: .9em;
+    color: rgb(230, 230, 240);
+    font-size: 1rem;
 }
 
 .FormField__Checkbox {
