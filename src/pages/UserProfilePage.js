@@ -21,36 +21,37 @@ export default class UserProfilePage extends React.Component{
         super(props)
 
         this.state = {
-            user:{}
+            user:{},
+            trips:[]
         }
     }
 
     componentDidMount(){
-        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
-            .then(result=>{
-                this.setState({
-                    user:result.data.data,
-                    username:result.data.data.username,
-                    first_name:result.data.data.first_name,
-                    last_name:result.data.data.last_name,
-                    bio_text:result.data.data.bio_text
-                })
+        Promise.all(
+            [axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')),
+            axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips")]
+        ).then(results=>{
+            this.setState({
+                user:results[0].data.data,
+                trips:results[1].data.data
             })
+            console.log(this.state)
+        })
     }
     render(){
-        const { user } = this.state
+        const { user, trips } = this.state
         return(
             <div className="body-background">
             <NavBar/>
-            <Container fluid className="py-3 px-3" id="detail-container">
-                <Row className="d-flex align-items-center">
-                    <Col className xs="12" lg="4" >
+            <Container fluid className="d-flex flex-column py-3 px-3 align-items-center" id="detail-container">
+                <Row className="row d-flex align-items-center w-100">
+                    <Col className="w-100" xs="12" lg="4" >
                         <div id="image-col">
                             <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
                             <p className="text d-flex justify-content-center">Change Profile Picture</p>
                         </div>
                     </Col>
-                    <Col xs="12" lg="8">
+                    <Col className="w-100" xs="12" lg="8">
                         <h1>{user.first_name+" "+user.last_name}'s Profile</h1>
                         <h3>@{user.username}</h3>
                         <h5>
@@ -67,93 +68,22 @@ export default class UserProfilePage extends React.Component{
                         </h5>
                     </Col>
                 </Row>
-            <hr/>
-                <Row>
-                    <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
+                <Row className="d-flex flex-column">
+                    <Col><h1>Trip History</h1></Col>
+                    <Col className="card-container">
+                        <Card className="shadow thecard">
+                            <CardImg src={defaults} alt="Card image cap" className="front"/>
+                            <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
+                            
+                            <div className="back">
+                                <CardBody>
+                                <CardTitle>Card title</CardTitle>
+                                <CardSubtitle>Card subtitle</CardSubtitle>
+                                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                                <button className="see-more-button">See More</button>
+                                </CardBody>
+                            </div>
+                        </Card>
                     </Col>
                 </Row>
             </Container>

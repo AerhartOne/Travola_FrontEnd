@@ -29,11 +29,6 @@
     visibility:visible;
 }
 
-.card-container{
-    position: relative;
-    width: 250px;
-    height: 370px;
-}
 .thecard{
     width: 100%;
     height: 100%;
