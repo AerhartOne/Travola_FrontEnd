@@ -67,20 +67,23 @@ class SignInForm extends Component {
         return this.state.login ? (
             <Redirect push to={"/user/" +this.state.current_user}/>
         ) : (
-        <div className="FormCenter">
+        <div className="FormCenter container-fluid mx-0 my-0 px-3 py-0">
             <form onSubmit={this.handleSubmit} className="FormFields" >
-                <div className="FormField">
-                    <label className="FormField__Label" htmlFor="email">Username</label>
-                    <input type="text" id="name" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} />
+                <div className="row FormField">
+                    {/* <label className="FormField__Label" htmlFor="email">Username</label> */}
+                    <input type="text" id="name" className="FormField__Input" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
                 </div>
 
-                <div className="FormField">
-                    <label className="FormField__Label" htmlFor="password">Password</label>
-                    <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                <div className="row FormField">
+                    {/* <label className="FormField__Label" htmlFor="password">Password</label> */}
+                    <input type="password" id="password" className="FormField__Input" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
                 </div>
 
-                <div className="FormField">
-                    <button type="submit" className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
+                <div className="row FormField d-flex justify-content-center">
+                    <button type="submit" className="FormField__Button mr-20 w-100">Sign In</button> 
+                </div>
+                <div className="row d-flex justify-content-center">
+                    <Link to="/" className="FormField__Link">Don't have an account yet? Sign up.</Link>
                 </div>
             </form>
         </div>
