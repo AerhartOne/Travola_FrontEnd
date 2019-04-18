@@ -29,16 +29,19 @@ export default class TripDashboard extends React.Component{
             
             <div>
                 
-                <Container fluid className="dashboard-container">
-                    
+                <Container fluid className="dashboard-container d-flex flex-column justify-content-center align-items-center">
                     <Row>
-                        
                         <Col xs="12">
                             <NavBar/>
                         </Col>
-                        <Col xs="12">
-                            <EventAdderButton trip_name={this.props.match.params.trip_name}/>
+                    </Row>
+
+                    <Row xs="12" className="py-0 my-0 w-75">
+                        <Col className="w-100">
+                                <EventAdderButton trip_name={this.props.match.params.trip_name}/>
                         </Col>
+                    </Row>
+                    <Row className="w-75 py-0">
                         {
                             this.state.trip_id ?
                             <EventCard trip_id={this.state.trip_id.id}/> :

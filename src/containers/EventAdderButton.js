@@ -70,7 +70,7 @@ handleSubmit = (e) =>{
         return (
             <div>
                 
-                <div className="AddEventButton">
+                <div className="AddEventButton px-0 py-0">
                     {/* <i onClick={this.toggle} class="fas fa-plus-circle">{this.props.buttonLabel}</i> */}
                     <Button onClick={this.toggle} color="success">Add event</Button>
                 </div> 

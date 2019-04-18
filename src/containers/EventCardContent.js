@@ -49,7 +49,7 @@ class EventCardContent extends Component {
     render() {
         return (
             <div>
-                <Button color="info" onClick={this.toggle}>Show more</Button>
+                <Button color="info" onClick={this.toggle}>View Event Details</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>show/edit event</ModalHeader>
                     
