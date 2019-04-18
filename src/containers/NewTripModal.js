@@ -38,17 +38,20 @@ export default class NewTripModal extends React.Component{
 
     handleFileUploadChange = (e) => {
         this.setState({
-            filename:e.target.files[0]
+            file:e.target.files[0]
         })
     }
 
     handleSubmit = (e) => {
-        console.log(this.state)
         let formData = new FormData()
-        formData.set('user_id',localStorage.getItem('id'))
-        formData.set('trip_name',this.state.name)
-        formData.set('trip_desc',this.state.desc)
-        formData.set('trip_img',this.state.file)
+        formData.append('user_id',localStorage.getItem('id'))
+        formData.append('trip_name',this.state.name)
+        formData.append('trip_desc',this.state.desc)
+        formData.append('trip_img',this.state.file)
+        console.log(formData.get('user_id'))
+        console.log(formData.get('trip_name'))
+        console.log(formData.get('trip_desc'))
+        console.log(formData.get('trip_img'))
         axios({
             method:"POST",
             url:"http://localhost:5000/api/v1/trips/new",
@@ -59,7 +62,7 @@ export default class NewTripModal extends React.Component{
 
     // Page Render
     render(){
-        const { name, file: filename } = this.state
+        const { name, file } = this.state
         const {toggle , modal} = this.props
         return(
             <>
