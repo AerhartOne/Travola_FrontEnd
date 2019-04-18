@@ -19,7 +19,7 @@ export default class NewTripModal extends React.Component{
         this.state={
             name:"",
             desc:"",
-            display_img: null
+            display_img: undefined
         }
     }
 
