@@ -8,14 +8,11 @@
     text-align: center;
     padding-top: 20px;
     background-color: #52C4B9;
-    border-radius: 20px;
+    border: 1px solid transparent;
+    border-radius: 2rem;
     padding: 10px;
     color: white;
-    width: 30%;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%);
+    font-size: 1.5rem;
 }
 
 

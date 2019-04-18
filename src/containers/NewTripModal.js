@@ -5,6 +5,9 @@ import {
         ModalBody,
         Label,
         Input,
+        InputGroup,
+        InputGroupAddon,
+        InputGroupText,
         Form,
         FormGroup,
         ModalFooter,
@@ -68,12 +71,20 @@ export default class NewTripModal extends React.Component{
                 <Form onSubmit={this.handleSubmit}>
                     <ModalBody>
                             <FormGroup>
-                                <Label>Trip Name</Label>
-                                <Input onChange={this.handleTripNameChange}/>
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>Name</InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input onChange={this.handleTripNameChange}/>
+                                </InputGroup>
                             </FormGroup>
                             <FormGroup>
-                                <Label>Trip Description</Label>
-                                <Input onChange={this.handleTripDescChange}/>
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>Description</InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input onChange={this.handleTripDescChange}/>
+                                </InputGroup>
                             </FormGroup>
                             <FormGroup>
                                 <Label>Upload a trip image</Label>

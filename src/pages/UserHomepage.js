@@ -23,7 +23,7 @@ export default class UserHomepage extends React.Component{
 
         this.state = {
             modal:false,
-            username:"",
+            user:"",
             trips:[],
             isLoading:true
         }
@@ -36,7 +36,7 @@ export default class UserHomepage extends React.Component{
         ])
         .then((results) =>{
             this.setState({
-                username:results[0].data.data.username,
+                user:results[0].data.data,
                 trips:results[1].data.data,
                 isLoading:false
             })
@@ -50,22 +50,27 @@ export default class UserHomepage extends React.Component{
 
 
     render(){
-        const {modal,trips,username,isLoading} = this.state
+        const {modal,user,trips,isLoading} = this.state
         return(
             <div className="body-background">
-            <NavBar/>
-            <Container id="container">
+            <Container fluid id="container" className="w-75 py-5">
                 <Row>
-                    <Col xs="12" lg="12"><button className="h1" id="add_view_trips" onClick={this.toggle}>Add/View Trip</button></Col>
+                    <NavBar/>
+                </Row>
+                <Row className="d-flex flex-column justify-content-center align-items-center">
+                    <h1 className="display-1">{user.username}'s Trips</h1>
+                    <Button className="w-50 my-3" id="add_view_trips" onClick={this.toggle}>Add a Trip</Button>
+                </Row>
+                <Row>
                     {
                         isLoading ? <Loader/>:null
                     }
                     {
                         trips.map(trip =>
-                            <Col xs="12" lg="4" className="mt-5" key={trip.id}>
+                            <Col xs="12" lg="4" className="my-3" key={trip.id}>
                                 <Card className="shadow">
                                     <CardBody>
-                                        <Button href={"/user/"+username+"/dashboard/"+trip.trip_name}>
+                                        <Button href={"/user/"+user.username+"/dashboard/"+trip.trip_name}>
                                         { trip.trip_img_url === "" ?
                                             <CardImg top width="100%" src={defaults} alt="Card image cap" />
                                             :
