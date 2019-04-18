@@ -48,10 +48,6 @@ export default class NewTripModal extends React.Component{
         formData.append('trip_name',this.state.name)
         formData.append('trip_desc',this.state.desc)
         formData.append('trip_img',this.state.file)
-        console.log(formData.get('user_id'))
-        console.log(formData.get('trip_name'))
-        console.log(formData.get('trip_desc'))
-        console.log(formData.get('trip_img'))
         axios({
             method:"POST",
             url:"http://localhost:5000/api/v1/trips/new",
