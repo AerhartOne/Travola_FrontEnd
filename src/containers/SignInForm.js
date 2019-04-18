@@ -83,7 +83,7 @@ class SignInForm extends Component {
                     <button type="submit" className="FormField__Button w-100">Sign In</button> 
                 </div>
                 <div className="row d-flex justify-content-center">
-                    <Link to="/" className="FormField__Link">Don't have an account yet? Sign up.</Link>
+                    <Link to="/" className="inline-link">Don't have an account yet? Sign up.</Link>
                 </div>
             </form>
         </div>

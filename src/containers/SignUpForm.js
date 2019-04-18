@@ -81,23 +81,23 @@ class SignUpForm extends Component {
                     </div>
                     
 
-                        <div className="row d-flex justify-content-center">
-                            <div className="FormField w-50 d-flex justify-content-center">
-                                {/* <label className="FormField__Label" htmlFor="name">First Name</label> */}
-                                <input type="text" id="name" className="FormField__Input w-100" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
-                            </div>
-
-                            <div className="FormField w-50 d-flex justify-content-center">
-                                {/* <label className="FormField__Label" htmlFor="name">Last Name</label> */}
-                                <input type="text" id="name" className="FormField__Input w-100" placeholder="Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
-                            </div>
+                    <div className="row d-flex justify-content-center">
+                        <div className="FormField w-50 d-flex justify-content-center">
+                            {/* <label className="FormField__Label" htmlFor="name">First Name</label> */}
+                            <input type="text" id="name" className="FormField__Input mr-3 w-100" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
                         </div>
 
-                    <div className="row FormField">
+                        <div className="FormField w-50 d-flex justify-content-center">
+                            {/* <label className="FormField__Label" htmlFor="name">Last Name</label> */}
+                            <input type="text" id="name" className="FormField__Input w-100" placeholder="Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
+                        </div>
+                    </div>
+
+                    <div className="row FormField d-flex justify-content-center">
                         <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I understand and agree to all terms and conditions in the <a href="#" className="FormField__TermsLink">Terms of Service</a>.
+                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I understand and agree to all terms and conditions in the <a href="#" className="inline-link">Terms of Service</a>.
                         </label>
-                        </div>
+                    </div>
 
                         <div className="row FormField d-flex justify-content-center">
                         { email && password && username && hasAgreed && first_name && last_name ?
@@ -111,7 +111,7 @@ class SignUpForm extends Component {
                         }
                         </div>
                         <div className="row d-flex justify-content-center">
-                            <Link to="/sign-in" className="FormField__Link">Already have an account?</Link>
+                            <Link to="/sign-in" className="inline-link">Already have an account?</Link>
                         </div>
 
                 </form>
