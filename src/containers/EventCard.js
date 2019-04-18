@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EventCardContent from '../containers/EventCardContent.js'
 import { 
         Card, 
         CardImg, 
@@ -11,6 +12,7 @@ import {
 } from 'reactstrap';
 import axios from 'axios'
 // import console = require('console');
+
 
 class EventCard extends Component {
     constructor(props){
