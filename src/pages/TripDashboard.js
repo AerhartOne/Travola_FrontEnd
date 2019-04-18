@@ -15,51 +15,15 @@ export default class TripDashboard extends React.Component{
                     
                     <Row>
                         
-                        <Col>
+                        <Col xs="12">
                             <NavBar/>
                         </Col>
-
+                        <Col xs="12">
+                            <EventAdderButton trip_name={this.props.match.params.trip_name}/>
+                        </Col>
+                        <EventCard/>
                     </Row>
 
-                    <Row>
-
-                        <Col>
-                            <EventAdderButton />
-                        </Col>
-                        
-                    </Row>
-                    
-                    <Row className="card-row">
-                        
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                    </Row>
-
-                    <Row className="card-row">
-                        
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                        <Col sm="4">
-                            <EventCard />
-                        </Col>
-
-                    </Row>
 
                 </Container>
             
