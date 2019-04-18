@@ -26,64 +26,59 @@ class App extends Component {
     return (
       <>
         <Router>
+
           <Route exact strict path = "/"
             component = {props => {
               return (
-                <Homepage
-                {...props}
-                >
+                <Homepage {...props} >
                   <SignUpForm/>    
                 </Homepage>
               )
             }}
-            />
+          />
+
           <Route exact strict path="/sign-in"
             component = {props => {
               return (
-                <Homepage
-                {...props}
-                >
+                <Homepage {...props} >
                   <SignInForm/>     
                 </Homepage>
               )
             }}
           />
+
           <Route exact strict path = "/user/:username"
             component = {props => {
               return (
-                <UserHomepage
-                {...props}
-                />
+                <UserHomepage {...props} />
               )
             }}
-            />
-            <Route exact strict path = "/user/:username/profile"
+          />
+
+          <Route exact strict path = "/user/:username/profile"
             component = {props => {
               return (
-                <UserProfilePage
-                {...props}
-                />
+                <UserProfilePage {...props} />
               )
             }}
-            />
-            <Route exact strict path = "/user/:username/setting"
+          />
+          
+          <Route exact strict path = "/user/:username/setting"
             component = {props => {
               return (
-                <UserSettingPage
-                {...props}
-                />
+                <UserSettingPage {...props} />
               )
             }}
-            />
-            <Route exact strict path = "/user/:username/dashboard/:trip_name"
+          />
+
+          <Route exact strict path = "/user/:username/dashboard/:trip_name"
             component = {props => {
               return (
-                <TripDashboard
-                {...props}
-                />
+                <TripDashboard {...props} />
               )
             }}
-            />
+          />
+          
         </Router>
       </>
     );
