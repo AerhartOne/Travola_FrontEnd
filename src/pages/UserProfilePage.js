@@ -9,7 +9,6 @@ import {
         CardTitle,
         CardSubtitle,
         CardText,
-        Button,
         CardImg
         } from 'reactstrap'
 import '../css/userProfilePage.css'

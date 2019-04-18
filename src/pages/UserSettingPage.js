@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../containers/Navbar';
 import SettingForm from '../containers/SettingForm';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 import '../css/UserSetting.css'
 

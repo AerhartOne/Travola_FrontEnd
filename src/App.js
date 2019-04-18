@@ -8,11 +8,8 @@ import UserHomepage from './pages/UserHomepage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserSettingPage from './pages/UserSettingPage';
 import TripDashboard from './pages/TripDashboard';
-import NewTripForm from './containers/NewTripForm';
-import UserDetailsForm from './containers/UserDetailsForm'
 import SignInForm from './containers/SignInForm';
 import SignUpForm from './containers/SignUpForm';
-import NavBar from './containers/Navbar'
 
 
 class App extends Component {

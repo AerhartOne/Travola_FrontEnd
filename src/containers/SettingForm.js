@@ -5,8 +5,6 @@ import {
         Col,
 } from 'reactstrap'
 import '../css/UserSetting.css'
-import countryList from 'react-select-country-list'
-import Select from 'react-select'
 
 
 

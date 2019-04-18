@@ -155,7 +155,7 @@
 
 #container{
     width: 80%;
-    margin:0 auto;
+    margin-top:60px;
 }
 
 
@@ -178,6 +178,8 @@
     float: right;
     padding-right: 20px;
 }
+
+/* loader css */
 
 #load {
     width: 500px;
