@@ -88,12 +88,12 @@ export default class UserProfilePage extends React.Component{
                                         <CardImg src={defaults} alt="Card image cap" className="front"/>
                                     </>
                                 }
-                                <CardText className="front d-flex justify-content-center align-items-center card-front-text">{trip.trip_name}</CardText>
+                                <CardTitle className="d-flex justify-content-center align-items-center profile-trip-card-front-text profile-trip-card-title front ">{trip.trip_name}</CardTitle>
                                 
                                 <div className="back">
                                     <CardBody>
-                                        <CardTitle>{trip.trip_name}</CardTitle>
-                                        <CardText>{trip.trip_desc}</CardText>
+                                        <CardTitle className="profile-trip-card-title">{trip.trip_name}</CardTitle>
+                                        <CardText className="profile-trip-card-text">{trip.trip_desc}</CardText>
                                         <a href={"/user/"+user.username+"/dashboard/"+trip.trip_name} className="see-more-button w-100">Go to Trip</a>
                                     </CardBody>
                                 </div>
