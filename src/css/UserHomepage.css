@@ -1,8 +1,18 @@
 
+#header-section {
+    background: #3fb0ac;
+    color: white;
+}
 
+#trip-list-section {
+    background: transparent;
+    color: darkslategray;
+}
+
+/* 
 #add-button {
     background-color: #1DB954;
-}
+} */
 
 #add_view_trips {
     text-align: center;
@@ -15,4 +25,35 @@
     font-size: 1.5rem;
 }
 
+.trip-card {
+    background: white;
+    color: darkslategray;
+    transition: all 0.25s;
+}
 
+.trip-card:hover {
+    background: #3fb0ac;
+    color: white;
+}
+
+.card-img {
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 2rem;
+}
+
+.card-subtitle {
+    font-size: 1.1rem;
+}
+
+.card-button {
+    background: transparent;
+    transition: all 0.25s;
+}
+
+.card-button:hover {
+    background: radial-gradient(circle, rgba(255,255,255, 0.5),rgba(255,255,255, 0.8));
+    text-decoration: none;
+}

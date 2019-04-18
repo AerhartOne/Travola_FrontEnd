@@ -5,10 +5,13 @@ import {
         Row,
         Col,
         Card,
+        CardBody,
+        CardFooter,
+        CardTitle,
+        CardSubtitle,
+        CardText,
         CardImg,
         Button,
-        CardBody,
-        CardText
     } from 'reactstrap'
 import '../css/UserHomepage.css'
 import button from '../images/add_button.png'
@@ -53,35 +56,48 @@ export default class UserHomepage extends React.Component{
         const {modal,user,trips,isLoading} = this.state
         return(
             <div className="body-background">
-            <Container fluid id="container" className="w-75 py-5">
+            <Container fluid id="container" className="d-flex flex-column align-items-center justify-content-center w-100 px-0">
                 <Row>
                     <NavBar/>
                 </Row>
-                <Row className="d-flex flex-column justify-content-center align-items-center">
+                <Row id="header-section" className="w-100 d-flex flex-column justify-content-center align-items-center py-3">
                     <h1 className="display-1">{user.username}'s Trips</h1>
                     <Button className="w-50 my-3" id="add_view_trips" onClick={this.toggle}>Add a Trip</Button>
                 </Row>
-                <Row>
-                    {
-                        isLoading ? <Loader/>:null
+                <Row id="trip-list-section" className="w-75">
+                    { isLoading ? 
+                        <Loader/>
+                    :
+                        null
                     }
-                    {
-                        trips.map(trip =>
+                    { trips.length > 0 ?
+                        <>
+                        { trips.map(trip =>
                             <Col xs="12" lg="4" className="my-3" key={trip.id}>
-                                <Card className="shadow">
-                                    <CardBody>
-                                        <Button href={"/user/"+user.username+"/dashboard/"+trip.trip_name}>
-                                        { trip.trip_img_url === "" ?
-                                            <CardImg top width="100%" src={defaults} alt="Card image cap" />
-                                            :
-                                            <CardImg top width="100%" src={trip.s3_img_url} alt="Card image cap" />
-                                        }
-                                            <CardText>{trip.trip_name}</CardText>
-                                        </Button>
+                                <a href={"/user/"+user.username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 card-button">
+                                <Card className="shadow h-100 trip-card">
+                                    { trip.trip_img_url === "" ?
+                                        <CardImg top width="100%" src={defaults} alt="Card image cap" />
+                                        :
+                                        <CardImg top width="100%" src={trip.s3_img_url} alt="Card image cap" />
+                                    }
+                                    <CardBody classname="h-100">
+                                        <CardTitle>{trip.trip_name}</CardTitle>
+                                        <CardSubtitle>{trip.trip_desc}</CardSubtitle>
                                     </CardBody>
                                 </Card>
+                                </a>
                             </Col>
-                            )
+                            )}
+                        </>
+                    :
+                        <>
+                            <Col className="w-100 d-flex flex-column align-items-center justify-content-center my-5 lead text-center">
+                                <p>{user.username} doesn't have any trips yet.</p>
+                                <p>Add some!</p>
+                            </Col>
+                        </>
+
                     }
                     {/* <Col xs="12" lg="4" className="mt-5">
                         <Card className="shadow">
