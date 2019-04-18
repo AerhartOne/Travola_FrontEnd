@@ -190,6 +190,16 @@
     transform: translate(-50%,-50%)
 }
 
+.EventCardContentBtn {
+    float: right;
+    margin-top: 10px;
+}
+
+.EventCardContent {
+    padding-top: 55px;
+}
+
+
 
 
 
