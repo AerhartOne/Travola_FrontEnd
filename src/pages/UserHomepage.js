@@ -56,11 +56,9 @@ export default class UserHomepage extends React.Component{
     render(){
         const {modal,user,trips,isLoading} = this.state
         return(
-            <div className="body-background">
-            <Container fluid id="container" className="d-flex flex-column align-items-center justify-content-center w-100 px-0">
-                <Row>
-                    <NavBar/>
-                </Row>
+            <>
+            <Container id="user-homepage-main-container" fluid className="d-flex flex-column align-items-center py-0 px-0 w-100">
+                <NavBar/>
                 <Row id="header-section" className="w-100 d-flex flex-column justify-content-center align-items-center py-3">
                     <h1 className="display-1">{user.username}'s Trips</h1>
                     <Button className="w-50 my-3" id="add_view_trips" onClick={this.toggle}>Add a Trip</Button>
@@ -113,7 +111,7 @@ export default class UserHomepage extends React.Component{
                 </Row>
             </Container>
             <NewTripModal modal={modal} toggle={this.toggle}/>
-            </div>
+            </>
         )
     }
 }

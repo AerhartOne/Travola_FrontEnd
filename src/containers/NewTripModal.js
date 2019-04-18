@@ -75,7 +75,7 @@ export default class NewTripModal extends React.Component{
                                     <InputGroupAddon addonType="prepend">
                                         <InputGroupText>Name</InputGroupText>
                                     </InputGroupAddon>
-                                    <Input onChange={this.handleTripNameChange}/>
+                                    <Input onChange={this.handleTripNameChange} type="text" />
                                 </InputGroup>
                             </FormGroup>
                             <FormGroup>
@@ -83,7 +83,7 @@ export default class NewTripModal extends React.Component{
                                     <InputGroupAddon addonType="prepend">
                                         <InputGroupText>Description</InputGroupText>
                                     </InputGroupAddon>
-                                    <Input onChange={this.handleTripDescChange}/>
+                                    <Input onChange={this.handleTripDescChange} type="textarea"/>
                                 </InputGroup>
                             </FormGroup>
                             <FormGroup>

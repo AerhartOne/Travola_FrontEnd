@@ -44,8 +44,8 @@ export default class UserProfilePage extends React.Component{
         const { user, trips } = this.state
         return(
             <>
-            <Container fluid className="d-flex flex-column py-5 px-0 align-items-center w-100" id="detail-container">
-            <NavBar/>
+            <Container fluid className="d-flex flex-column px-0 align-items-center w-100" id="detail-container">
+                <NavBar/>
                 <Row id="user-detail-section" className="d-flex py-5 justify-content-center align-items-center text-center w-100">
                     <Col className="d-flex justify-content-center" xs="12" lg="auto">
                         { user.avatar_url !== undefined && user.avatar_url !== null && user.avatar_url !== "" ? 

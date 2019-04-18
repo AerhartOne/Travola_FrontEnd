@@ -42,7 +42,7 @@ export default class NavBar extends React.Component{
             <Redirect push to="/"/>
         ) : (
             <>
-                <Navbar className="fixed-top" color="light" light expand="md">
+                <Navbar className="w-100" color="light" light expand="md">
                     <NavbarBrand><a href={"/user/"+this.state.username}><img src={ logo } alt="travola logo" width="20%"/></a></NavbarBrand>
                     <Nav className="ml-auto mr-2"navbar>
                     <UncontrolledDropdown nav inNavbar>
