@@ -38,19 +38,19 @@ class EventCard extends Component {
     render() {
         const { events } = this.state
         return (
-                events.map(e =>
-                <Col xs="12" md="4" key={e.id} className="py-3 px-3" >
-                    <Card>
-                        <CardImg top width="100%" src="https://placeimg.com/640/480/any" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>{e.location}</CardTitle>
-                            <CardSubtitle>{e.date_time}</CardSubtitle>
-                            <CardText>{e.desc}</CardText>
-                            <EventCardContent />
-                        </CardBody>
-                    </Card>
-                </Col>
-                )
+            events.map(e =>
+            <Col xs="12" md="4" key={e.id} className="py-3 px-3" >
+                <Card>
+                    <CardImg top width="100%" src="https://placeimg.com/640/480/any" alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>{e.location}</CardTitle>
+                        <CardSubtitle>{e.date_time}</CardSubtitle>
+                        <CardText>{e.desc}</CardText>
+                        <EventCardContent />
+                    </CardBody>
+                </Card>
+            </Col>
+            )
         );
     }
 }
