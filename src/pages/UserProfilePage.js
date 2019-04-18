@@ -21,131 +21,87 @@ export default class UserProfilePage extends React.Component{
         super(props)
 
         this.state = {
-            username:"",
-            first_name:"",
-            last_name:""
+            user:{},
+            trips:[]
         }
     }
 
     componentDidMount(){
-        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
-            .then(result=>{
-                this.setState({
-                    username:result.data.data.username,
-                    first_name:result.data.data.first_name,
-                    last_name:result.data.data.last_name
-                })
+        Promise.all(
+            [axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')),
+            axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips")]
+        ).then(results=>{
+            this.setState({
+                user:results[0].data.data,
+                trips:results[1].data.data
             })
+            console.log(this.state)
+        })
     }
     render(){
-        const { username , first_name , last_name } = this.state
+        const { user, trips } = this.state
         return(
             <div className="body-background">
+            
             <NavBar/>
-            <Container id="detail-container">
-                <Row>
-                    <Col xs="12" lg="4" >
-                        <div id="image-col">
-                            <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
-                            <p className="text d-flex justify-content-center">Change Profile Picture</p>
-                        </div>
+
+            <Container className="d-flex flex-column py-5 px-3 align-items-center w-75" id="detail-container">
+                <Row className="d-flex justify-content-center align-items-center w-100">
+                    <Col className="d-flex justify-content-center" xs="12" lg="auto">
+                        { user.avatar_url !== undefined && user.avatar_url !== null && user.avatar_url !== "" ? 
+                            <img src={user.s3_avatar_url} alt="profile" width="200px" height="200px" className="rounded-circle"/>
+                        :
+                            <img src={profile} alt="profile" width="200px" height="200px" className="rounded-circle"/>
+                        }
                     </Col>
-                    <Col xs="12" lg="8">
-                        <h1>{first_name+" "+last_name}'s Profile</h1>
-                        <h3>@{username}</h3>
-                        <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</h5>
+                    <Col className="" xs="12" lg="auto">
+                        <h1>{user.first_name+" "+user.last_name}'s Profile</h1>
+                        <h3>@{user.username}</h3>
+                        <h5>
+                            {
+                                user.bio_text !== undefined && user.bio_text !== null && user.bio_text != "" ?
+                                <React.Fragment>
+                                    {user.bio_text}
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                    This user hasnt written anything about themselves.
+                                </React.Fragment>
+                            }
+                        </h5>
                     </Col>
                 </Row>
-            </Container>
-            <hr/>
-            <Container>
-                <Row>
-                    <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
-                    <Col xs="12" lg="4" className="mt-5 card-container">
-                    <Card className="shadow thecard">
-                        <CardImg src={defaults} alt="Card image cap" className="front"/>
-                        <CardText className="front d-flex justify-content-center cardtext">Trip name</CardText>
-                        <div className="back">
-                            <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <button className="see-more-button">See More</button>
-                            </CardBody>
-                        </div>
-                    </Card>
-                    </Col>
+                <Row className="w-100 py-3 d-flex justify-content-center">
+                    <h1>Trip History</h1>
+                </Row>
+                <Row className="w-100 py-3">
+                {
+                    trips.map(trip => 
+                        <Col xs="12" lg="4" className="card-container py-3">
+                            <Card className="shadow thecard d-flex flex-column align-content-center">
+                                { trip.trip_img_url !== undefined && trip.trip_img_url !== null && trip.trip_img_url !== "" ?
+                                    <>
+                                        <CardImg src={trip.s3_img_url} alt="Card image cap" className="front"/>
+                                    </>
+                                    :
+                                    <>
+                                        <CardImg src={defaults} alt="Card image cap" className="front"/>
+                                    </>
+                                }
+                                <CardText className="front d-flex justify-content-center align-items-center card-front-text">{trip.trip_name}</CardText>
+                                
+                                <div className="back">
+                                    <CardBody>
+                                    <CardTitle>{trip.trip_name}</CardTitle>
+                                    {/* <CardSubtitle>{trip.trip_desc}</CardSubtitle> */}
+                                    <CardText>{trip.trip_desc}</CardText>
+                                    <button className="see-more-button">See More</button>
+                                    </CardBody>
+                                </div>
+                            </Card>
+                        </Col>
+                    )
+                }
                 </Row>
             </Container>
             </div>
