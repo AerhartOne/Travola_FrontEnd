@@ -25,13 +25,10 @@ class EventCard extends Component {
     }
 
     componentDidMount(){
-        Promise.all([
-            axios.get("http://localhost:5000/api/v1/trip_events/"),
-            axios.get("http://localhost:5000/api/v1/trips/"+this.props.trip_id+"/show")
-        ])
-        .then((results)=>{
+        axios.get("http://localhost:5000/api/v1/trips/"+this.props.trip_id+"/events")
+        .then((result)=>{
             this.setState({
-                events:results[0].data.data.filter(f => f.parent_trip === results[1].data.data.id)
+                events:result.data.data
             })
             console.log(this.state)
         })
