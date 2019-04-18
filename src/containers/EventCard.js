@@ -11,7 +11,7 @@ import {
         Col
 } from 'reactstrap';
 import axios from 'axios'
-// import console = require('console');
+
 
 
 class EventCard extends Component {
@@ -19,20 +19,21 @@ class EventCard extends Component {
         super(props)
 
         this.state = {
-            events:[]
+            events:[],
+            trip_id:""
         }
     }
 
     componentDidMount(){
         Promise.all([
-            axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips"),
-            axios.get("http://localhost:5000/api/v1/trip_events/")
+            axios.get("http://localhost:5000/api/v1/trip_events/"),
+            axios.get("http://localhost:5000/api/v1/trips/"+this.props.trip_id+"/show")
         ])
-        .then((results) =>{
+        .then((results)=>{
             this.setState({
-                events:results[1].data.data.filter(f => f.parent_trip ===
-                    results[0].data.data[0].parent_user)
+                events:results[0].data.data.filter(f => f.parent_trip === results[1].data.data.id)
             })
+            console.log(this.state)
         })
     }
 
@@ -40,7 +41,7 @@ class EventCard extends Component {
         const { events } = this.state
         return (
                 events.map(e =>
-                <Col sm="4">
+                <Col sm="4" key={e.id}>
                 <Card>
                 <CardImg top width="100%" src="https://placeimg.com/640/480/any" alt="Card image cap" />
                     <CardBody>

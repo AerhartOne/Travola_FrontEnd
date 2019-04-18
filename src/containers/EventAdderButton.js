@@ -11,7 +11,6 @@ import {
         Label, 
         Input
 } from 'reactstrap';
-// import console = require('console');
 import axios from 'axios'
 
 class EventAdderButton extends Component {
@@ -33,7 +32,7 @@ componentDidMount(){
             this.setState({
                 trip_id:result.data.data.find(f => f.trip_name === this.props.trip_name)
             })
-        }console.log(this.state)
+        }
         
     })
 }
