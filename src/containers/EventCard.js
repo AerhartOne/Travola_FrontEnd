@@ -47,7 +47,7 @@ class EventCard extends Component {
                         <CardTitle>{e.location}</CardTitle>
                         <CardSubtitle>{e.date_time}</CardSubtitle>
                         <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <Button color="info">Show more</Button>
+                        <EventCardContent />
                     </CardBody>
                 </Card>
                 </Col>
