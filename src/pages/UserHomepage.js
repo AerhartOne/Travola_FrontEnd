@@ -32,12 +32,12 @@ export default class UserHomepage extends React.Component{
     componentDidMount(){
         Promise.all([
             axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')),
-            axios.get("http://localhost:5000/api/v1/trips/")
+            axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips")
         ])
         .then((results) =>{
             this.setState({
                 username:results[0].data.data.username,
-                trips:results[1].data.data.filter(u => u.parent_user === results[0].data.data.id),
+                trips:results[1].data.data,
                 isLoading:false
             })
         })
@@ -66,7 +66,11 @@ export default class UserHomepage extends React.Component{
                                 <Card className="shadow">
                                     <CardBody>
                                         <Button href={"/user/"+username+"/dashboard/"+trip.trip_name}>
+                                        { trip.trip_img_url === "" ?
                                             <CardImg top width="100%" src={defaults} alt="Card image cap" />
+                                            :
+                                            <CardImg top width="100%" src={trip.s3_img_url} alt="Card image cap" />
+                                        }
                                             <CardText>{trip.trip_name}</CardText>
                                         </Button>
                                     </CardBody>
