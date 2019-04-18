@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Route, Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 
 
 class SignInForm extends Component {
@@ -46,12 +46,12 @@ class SignInForm extends Component {
             if(result.data.status === true){
                 console.log(result.data.data)
                 console.log(result.data.status)
+                localStorage.setItem('id', result.data.data.id)
                 this.setState({
                     login:true,
                     current_user:result.data.data.username
                     
                 })
-                localStorage.setItem('id', result.data.data.id)
             }else{
                 alert("Wrong username or password")
             }

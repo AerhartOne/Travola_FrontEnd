@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios'
+
 
 class SignUpForm extends Component {
     constructor() {
@@ -12,7 +13,8 @@ class SignUpForm extends Component {
             username: '',
             hasAgreed: false,
             first_name:"",
-            last_name:""
+            last_name:"",
+            signedUp:false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -46,11 +48,19 @@ class SignUpForm extends Component {
             url:"http://localhost:5000/api/v1/users/",
             data:formData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
+        }).then((result)=>{
+            if(result.data.status){
+                this.setState({signedUp: true})
+            }
         })
         
     }
 
     render() {
+        const { email, password, username, first_name, last_name, hasAgreed, signedUp } = this.state
+        if (signedUp) {
+            return (<Redirect to="/sign-in"/>)
+        }
         return (
             <div className="FormCenter">
                 <form onSubmit={this.handleSubmit} className="FormFields">
@@ -81,13 +91,18 @@ class SignUpForm extends Component {
 
                     <div className="FormField">
                         <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
+                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="#" className="FormField__TermsLink">terms of service</a>
                         </label>
                         </div>
 
-                    <div className="FormField">
-                        <button type="submit" className="FormField__Button mr-20" href="/new">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
-                    </div>
+                    {email && password && username && hasAgreed && first_name && last_name ?
+                        <div className="FormField">
+                            <button type="submit" className="FormField__Button mr-20" href="/sign-in">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+                        </div> :
+                        <div className="FormField">
+                            <button type="submit"  disabled className="FormField__Button mr-20" href="/sign-in">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+                        </div> 
+                    }
 
                 </form>
 
