@@ -9,7 +9,7 @@ export default class TripDashboard extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            trip_id: undefined
+            trip: undefined
         }
     }
 
@@ -18,8 +18,7 @@ export default class TripDashboard extends React.Component{
         .then((result)=>{
             
             this.setState({
-                trip_id:result.data.data.find(f => f.trip_name === this.props.match.params.trip_name),
-                
+                trip:result.data.data.find(f => f.trip_name === this.props.match.params.trip_name),
             })
         })
     }
@@ -43,8 +42,8 @@ export default class TripDashboard extends React.Component{
                     </Row>
                     <Row className="w-75 py-0">
                         {
-                            this.state.trip_id ?
-                            <EventCard trip_id={this.state.trip_id.id}/> :
+                            this.state.trip ?
+                            <EventCard trip_id={this.state.trip.id}/> :
                             null
                         }
                     </Row>
