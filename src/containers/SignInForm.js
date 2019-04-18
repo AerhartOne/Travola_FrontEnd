@@ -71,16 +71,16 @@ class SignInForm extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields" >
                 <div className="row FormField">
                     {/* <label className="FormField__Label" htmlFor="email">Username</label> */}
-                    <input type="text" id="name" className="FormField__Input" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+                    <input type="text" id="name" className="FormField__Input w-100" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
                 </div>
 
                 <div className="row FormField">
                     {/* <label className="FormField__Label" htmlFor="password">Password</label> */}
-                    <input type="password" id="password" className="FormField__Input" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    <input type="password" id="password" className="FormField__Input w-100" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
                 </div>
 
                 <div className="row FormField d-flex justify-content-center">
-                    <button type="submit" className="FormField__Button mr-20 w-100">Sign In</button> 
+                    <button type="submit" className="FormField__Button w-100">Sign In</button> 
                 </div>
                 <div className="row d-flex justify-content-center">
                     <Link to="/" className="FormField__Link">Don't have an account yet? Sign up.</Link>

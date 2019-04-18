@@ -74,7 +74,7 @@ class SignUpForm extends Component {
                         {/* <label className="FormField__Label" htmlFor="email">Email</label> */}
                         <input type="email" id="email" className="FormField__Input w-100" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </div>
-                    
+
                     <div className="row FormField">
                         {/* <label className="FormField__Label" htmlFor="password">Password</label> */}
                         <input type="password" id="password" className="FormField__Input w-100" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
@@ -102,11 +102,11 @@ class SignUpForm extends Component {
                         <div className="row FormField d-flex justify-content-center">
                         { email && password && username && hasAgreed && first_name && last_name ?
                             <React.Fragment>
-                                <button type="submit" className="FormField__Button mr-20 w-100" href="/sign-in">Sign Up</button>
+                                <button type="submit" className="FormField__Button w-100" href="/sign-in">Sign Up</button>
                             </React.Fragment>
                         :
                             <React.Fragment>
-                                <button type="submit"  disabled className="FormField__Button mr-20 w-100" href="/sign-in">Sign Up</button>
+                                <button type="submit"  disabled className="FormField__Button w-100" href="/sign-in">Sign Up</button>
                             </React.Fragment>
                         }
                         </div>
