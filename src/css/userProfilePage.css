@@ -1,6 +1,20 @@
+html {
+    background: #fae596;
+}
+
+#user-detail-section {
+    background: #3fb0ac;
+    color: white;
+}
+
+#trip-history-section {
+    background: transparent;
+    color: darkslategray;
+}
+
 #detail-container{
-    height: auto;
-    margin-top:55px;
+    background: #fae596;
+    /* margin-top:55px; */
 }
 
 #image-col{

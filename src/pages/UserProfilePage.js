@@ -41,12 +41,10 @@ export default class UserProfilePage extends React.Component{
     render(){
         const { user, trips } = this.state
         return(
-            <div className="body-background">
-            
+            <>
+            <Container fluid className="d-flex flex-column py-5 px-0 align-items-center w-100" id="detail-container">
             <NavBar/>
-
-            <Container className="d-flex flex-column py-5 px-3 align-items-center w-75" id="detail-container">
-                <Row className="d-flex justify-content-center align-items-center w-100">
+                <Row id="user-detail-section" className="d-flex py-5 justify-content-center align-items-center text-center w-100">
                     <Col className="d-flex justify-content-center" xs="12" lg="auto">
                         { user.avatar_url !== undefined && user.avatar_url !== null && user.avatar_url !== "" ? 
                             <img src={user.s3_avatar_url} alt="profile" width="200px" height="200px" className="rounded-circle"/>
@@ -72,12 +70,12 @@ export default class UserProfilePage extends React.Component{
                     </Col>
                 </Row>
                 <Row className="w-100 py-3 d-flex justify-content-center">
-                    <h1>Trip History</h1>
+                    <h1 className="my-0">Trip History</h1>
                 </Row>
-                <Row className="w-100 py-3">
+                <Row id="trip-history-section" className="w-100">
                 {
                     trips.map(trip => 
-                        <Col xs="12" lg="4" className="card-container py-3">
+                        <Col xs="12" lg="4" className="card-container">
                             <Card className="shadow thecard d-flex flex-column align-content-center">
                                 { trip.trip_img_url !== undefined && trip.trip_img_url !== null && trip.trip_img_url !== "" ?
                                     <>
@@ -104,7 +102,7 @@ export default class UserProfilePage extends React.Component{
                 }
                 </Row>
             </Container>
-            </div>
+            </>
         )
     }
 }
