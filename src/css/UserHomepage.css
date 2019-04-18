@@ -28,11 +28,14 @@
 .trip-card {
     background: white;
     color: darkslategray;
-    transition: all 0.25s;
+    top: 0px;
+    position: relative;
+    transition: all 0.5s;
 }
 
 .trip-card:hover {
     background: #3fb0ac;
+    top: -25px;
     color: white;
 }
 
