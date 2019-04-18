@@ -58,40 +58,40 @@ class SettingForm extends React.Component {
                     <Row>
                         <Col>
                             <form className="setting-box " onSubmit={this.handleSubmit} id="details">
-                                <h1 className="title">Update Basic Information</h1>
+                                <h1 className="display-1 title">Edit Account Information</h1>
 
                                 <div className="formfield">
-                                    <label className="formfield_label h4">First Name</label>
-                                    <input type="text" name="first_name" className="formfield_input" placeholder="Enter your new first name" value={this.state.first_name} onChange={this.handleChange} />
-                                    <button type="submit" onClick={this.handleSubmit} className="settingfield_button">Change</button>
+                                    <input type="text" name="username" className="formfield_input" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="formfield">
-                                    <label className="formfield_label h4">Last Name</label>
-                                    <input type="text" name="last_name" className="formfield_input" placeholder="Enter your new last name" value={this.state.last_name} onChange={this.handleChange} />
-                                    <button type="submit" onClick={this.handleSubmit} className="settingfield_button">Change</button>
+                                    <input type="email" name="email" className="formfield_input" placeholder="Email" value={this.state.password} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="formfield">
-                                    <label className="formfield_label h4">Username</label>
-                                    <input type="text" name="username" className="formfield_input" placeholder="Enter your new username" value={this.state.username} onChange={this.handleChange} />
-                                    <button type="submit" onClick={this.handleSubmit} className="settingfield_button">Change</button>
+                                    <input type="password" name="password" className="formfield_input" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </div>
 
-                                <div clasName="formfield">
-                                    <label className="formfield_label h4">Password</label>
-                                    <input type="password" name="password" className="formfield_input" placeholder="Enter your new password" value={this.state.password} onChange={this.handleChange} />
-                                    <button type="submit" onClick={this.handleSubmit} className="settingfield_button">Change</button>
+                                <Container fluid className="px-0 w-100">
+                                    <Row>
+                                        <Col>
+                                            <div className="formfield">
+                                                <input type="text" name="first_name" className="formfield_input" placeholder="First Name" value={this.state.first_name} onChange={this.handleChange} />
+                                            </div>
+                                        </Col>
+                                        <Col>
+                                            <div className="formfield">
+                                                <input type="text" name="last_name" className="formfield_input" placeholder="Last Name" value={this.state.last_name} onChange={this.handleChange} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Container>
+
+                                <div className="formfield">
+                                    <input type="textarea" name="bio" className="formfield_input" placeholder="Write a little about yourself." value={this.state.bio} onChange={this.handleChange} />
                                 </div>
 
-                                <div clasName="formfield">
-                                    <label className="formfield_label h4">Bio</label>
-                                    <input type="text" name="bio" className="formfield_input" placeholder="Change Bio" value={this.state.bio} onChange={this.handleChange} />
-                                    <button type="submit" onClick={this.handleSubmit} className="settingfield_button">Change</button>
-                                </div>
-
-                                
-
+                                <button type="submit" onClick={this.handleSubmit} className="settingfield_button w-100">Save details</button>
                             </form>
                         </Col>
                     </Row>

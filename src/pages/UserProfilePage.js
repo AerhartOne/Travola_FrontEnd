@@ -88,7 +88,7 @@ export default class UserProfilePage extends React.Component{
                                         <CardImg src={defaults} alt="Card image cap" className="front"/>
                                     </>
                                 }
-                                <CardTitle className="d-flex justify-content-center align-items-center profile-trip-card-front-text profile-trip-card-title front ">{trip.trip_name}</CardTitle>
+                                <CardTitle className="d-flex justify-content-center align-items-center profile-trip-card-front-text profile-trip-card-title front">{trip.trip_name}</CardTitle>
                                 
                                 <div className="back">
                                     <CardBody>
