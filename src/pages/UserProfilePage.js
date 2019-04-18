@@ -21,9 +21,7 @@ export default class UserProfilePage extends React.Component{
         super(props)
 
         this.state = {
-            username:"",
-            first_name:"",
-            last_name:""
+            user:{}
         }
     }
 
@@ -31,34 +29,45 @@ export default class UserProfilePage extends React.Component{
         axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id'))
             .then(result=>{
                 this.setState({
+                    user:result.data.data,
                     username:result.data.data.username,
                     first_name:result.data.data.first_name,
-                    last_name:result.data.data.last_name
+                    last_name:result.data.data.last_name,
+                    bio_text:result.data.data.bio_text
                 })
             })
     }
     render(){
-        const { username , first_name , last_name } = this.state
+        const { user } = this.state
         return(
             <div className="body-background">
             <NavBar/>
-            <Container id="detail-container">
-                <Row>
-                    <Col xs="12" lg="4" >
+            <Container fluid className="py-3 px-3" id="detail-container">
+                <Row className="d-flex align-items-center">
+                    <Col className xs="12" lg="4" >
                         <div id="image-col">
                             <img src={profile} alt="profile" width="250px" height="250px" className="rounded-circle"/>
                             <p className="text d-flex justify-content-center">Change Profile Picture</p>
                         </div>
                     </Col>
                     <Col xs="12" lg="8">
-                        <h1>{first_name+" "+last_name}'s Profile</h1>
-                        <h3>@{username}</h3>
-                        <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</h5>
+                        <h1>{user.first_name+" "+user.last_name}'s Profile</h1>
+                        <h3>@{user.username}</h3>
+                        <h5>
+                            {
+                                user.bio_text !== undefined && user.bio_text !== null && user.bio_text != "" ?
+                                <React.Fragment>
+                                    {user.bio_text}
+                                </React.Fragment>
+                                :
+                                <React.Fragment>
+                                    This user hasnt written anything about themselves.
+                                </React.Fragment>
+                            }
+                        </h5>
                     </Col>
                 </Row>
-            </Container>
             <hr/>
-            <Container>
                 <Row>
                     <Col xs="12" lg="12"><h1>Trip's History</h1></Col>
                     <Col xs="12" lg="4" className="mt-5 card-container">
