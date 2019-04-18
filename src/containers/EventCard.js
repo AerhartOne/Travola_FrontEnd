@@ -5,6 +5,7 @@ import {
         CardImg, 
         CardText, 
         CardBody,
+        CardFooter,
         CardTitle, 
         CardSubtitle, 
         Button,
@@ -40,14 +41,16 @@ class EventCard extends Component {
         return (
             events.map(e =>
             <Col xs="12" md="4" key={e.id} className="py-3 px-3" >
-                <Card>
+                <Card className="h-100">
                     <CardImg top width="100%" src="https://placeimg.com/640/480/any" alt="Card image cap" />
                     <CardBody>
                         <CardTitle>{e.location}</CardTitle>
                         <CardSubtitle>{e.date_time}</CardSubtitle>
                         <CardText>{e.desc}</CardText>
-                        <EventCardContent />
                     </CardBody>
+                    <CardFooter>
+                        <EventCardContent />
+                    </CardFooter>
                 </Card>
             </Col>
             )
