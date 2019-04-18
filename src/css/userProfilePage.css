@@ -107,12 +107,21 @@ html {
 }
 
 .see-more-button {
-    background-color: #52C4B9;
+    display: inline-block;
+    text-align: center;
+    background-color: #52C4B9; 
     color: white;
     border: none;
     outline: none;
     border-radius: 25px;
     padding: 15px 70px;
-    font-size: .8em;
+    font-size: 1.2rem;
     font-weight: 500;
+    transition: all 0.25s;
+}
+
+.see-more-button:hover {
+    background-color: #fae596; 
+    color: darkslategray;
+    text-decoration: none;
 }

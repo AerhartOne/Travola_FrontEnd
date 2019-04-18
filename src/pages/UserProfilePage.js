@@ -1,7 +1,9 @@
 import React from 'react'
+import Link from 'react-router-dom'
 import NavBar from '../containers/Navbar'
 import { 
-        Container ,
+        Button,
+        Container,
         Col,
         Row,
         Card,
@@ -75,7 +77,7 @@ export default class UserProfilePage extends React.Component{
                 <Row id="trip-history-section" className="w-100">
                 {
                     trips.map(trip => 
-                        <Col xs="12" lg="4" className="card-container">
+                        <Col xs="12" lg="4" className="card-container py-3 px-3">
                             <Card className="shadow thecard d-flex flex-column align-content-center">
                                 { trip.trip_img_url !== undefined && trip.trip_img_url !== null && trip.trip_img_url !== "" ?
                                     <>
@@ -90,10 +92,9 @@ export default class UserProfilePage extends React.Component{
                                 
                                 <div className="back">
                                     <CardBody>
-                                    <CardTitle>{trip.trip_name}</CardTitle>
-                                    {/* <CardSubtitle>{trip.trip_desc}</CardSubtitle> */}
-                                    <CardText>{trip.trip_desc}</CardText>
-                                    <button className="see-more-button">See More</button>
+                                        <CardTitle>{trip.trip_name}</CardTitle>
+                                        <CardText>{trip.trip_desc}</CardText>
+                                        <a href={"/user/"+user.username+"/dashboard/"+trip.trip_name} className="see-more-button w-100">Go to Trip</a>
                                     </CardBody>
                                 </div>
                             </Card>
