@@ -45,7 +45,7 @@ export default class NavBar extends React.Component{
         ) : (
             <>
                 <Navbar className="w-100" color="light" light expand="md">
-                    <NavbarBrand><a href={"/user/"+this.state.username}><img src={ logo } alt="travola logo" width="20%"/></a></NavbarBrand>
+                    <NavbarBrand href={"/user/"+this.state.username}><img src={ logo } alt="travola logo" width="20%"/></NavbarBrand>
                     <Nav className="ml-auto mr-2"navbar>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
