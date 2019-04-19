@@ -47,10 +47,11 @@ class SignInForm extends Component {
                 console.log(result.data.data)
                 console.log(result.data.status)
                 localStorage.setItem('id', result.data.data.id)
+                localStorage.setItem('jwt_token', result.data.access_token)
+                localStorage.setItem('jwt_refresh_token', result.data.refresh_token)
                 this.setState({
                     login:true,
                     current_user:result.data.data.username
-                    
                 })
             }else{
                 alert("Wrong username or password")

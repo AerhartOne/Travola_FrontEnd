@@ -33,6 +33,8 @@ export default class NavBar extends React.Component{
     }
     logOut = (e) =>{
         localStorage.removeItem('id')
+        localStorage.removeItem('jwt_token')
+        localStorage.removeItem('jwt_refresh_token')
         this.setState({
             isLogOut:true,
         })

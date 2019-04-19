@@ -40,9 +40,15 @@ export default class NewTripModal extends React.Component{
     }
 
     handleFileUploadChange = (e) => {
-        this.setState({
-            display_img:e.target.files[0]
-        })
+        if (e.target.files[0] != undefined) {
+            this.setState({
+                display_img:e.target.files[0]
+            })
+        } else {
+            this.setState({
+                display_img:null
+            })
+        }
     }
 
     handleSubmit = (e) => {
@@ -51,12 +57,16 @@ export default class NewTripModal extends React.Component{
         formData.append('trip_name',this.state.name)
         formData.append('trip_desc',this.state.desc)
         formData.append('trip_img', this.state.display_img)
-        console.log(formData.entries)
         axios({
             method:"POST",
             url:"http://localhost:5000/api/v1/trips/new",
             data:formData,
-            config: { headers: {'Content-Type': 'multipart/form-data' }}
+            config: { 
+                headers: {
+                    'Authorization' : 'Bearer ' + localStorage.getItem("jwt_token"),
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
         })
     }
 
