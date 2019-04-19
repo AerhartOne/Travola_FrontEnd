@@ -14,9 +14,10 @@ export default class TripDashboard extends React.Component{
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips")
+        axios.get("http://localhost:5000/api/v1/users/"+localStorage.getItem('id')+"/trips", {
+            headers: { 'Authorization': "Bearer " + localStorage.getItem("jwt_token") }
+        })
         .then((result)=>{
-            
             this.setState({
                 trip:result.data.data.find(f => f.trip_name === this.props.match.params.trip_name),
             })
