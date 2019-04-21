@@ -13,7 +13,7 @@ import {
         Input
 } from 'reactstrap';
 import axios from 'axios'
-import '../css/EventCard.css'
+import '../css/TripCard.css'
 import defaults from '../images/default-image.png'
 
 class EventCard extends Component {
@@ -29,7 +29,7 @@ class EventCard extends Component {
         e.preventDefault()
         let formData = new FormData
         formData.set('trip_id', this.state.trip.id)
-        axios.post("http://localhost:5000/api/v1/trip_events/delete",formData,{
+        axios.post("http://localhost:5000/api/v1/trips/delete",formData,{
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt_token')
             }
@@ -43,6 +43,9 @@ class EventCard extends Component {
         return (
             <a href={"/user/"+trip.parent_user.username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
             <Card className="shadow trip-card">
+                <Form onSubmit={this.handleDelete}>
+                    <Button type="submit" color='danger' className='close-button px-3'>X</Button>
+                </Form>
                 { trip.trip_img_url === "" ?
                     <CardImg top src={defaults} alt="Card image cap" className="trip-card-img trip-card-front-element" />
                     :
