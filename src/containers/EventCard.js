@@ -30,8 +30,9 @@ class EventCard extends Component {
                 <Card className="h-100">
                     <CardImg top width="100%" src="https://placeimg.com/640/480/any" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle>{tripEvent.location}</CardTitle>
+                        <CardTitle>{tripEvent.event_name}</CardTitle>
                         <CardSubtitle>{tripEvent.date_time}</CardSubtitle>
+                        <CardSubtitle>At {tripEvent.location}</CardSubtitle>
                         <CardText>{tripEvent.desc}</CardText>
                     </CardBody>
                     <CardFooter>

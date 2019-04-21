@@ -22,6 +22,7 @@ class EventAdderButton extends Component {
     
     this.state = {
         modal: false,
+        event_name: '',
         location:'',
         date_time:'',
         trip_id:'',
@@ -41,11 +42,19 @@ componentDidMount(){
         
     })
 }
+
 toggle() {
     this.setState(prevState => ({
         modal: !prevState.modal
     }));
 }
+
+handleEventName = (e) => {
+    this.setState({
+        event_name: e.target.value
+    })
+}
+
 handleLocation = (e) =>{
     this.setState({
         location:e.target.value
@@ -68,6 +77,7 @@ handleSubmit = (e) =>{
     e.preventDefault()
     console.log(this.state)
     let formData = new FormData()
+    formData.set('event_name',this.state.event_name)
     formData.set('date_time',this.state.date_time)
     formData.set('location',this.state.location)
     formData.set('parent_trip',this.state.trip_id.id)
@@ -98,6 +108,15 @@ handleSubmit = (e) =>{
                     
                     <Form onSubmit={this.handleSubmit}>
                         <ModalBody>        
+                            <FormGroup>
+                                <InputGroup size="lg">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>Event Name</InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input id="input-event-name" onChange={this.handleEventName} type="text" name="event_name" placeholder="Event Name" />
+                                </InputGroup>
+                            </FormGroup>
+
                             <FormGroup>
                                 <InputGroup size="lg">
                                     <InputGroupAddon addonType="prepend">
