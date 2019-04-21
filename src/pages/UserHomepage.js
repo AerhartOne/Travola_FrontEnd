@@ -20,6 +20,7 @@ import defaults from '../images/default-image.png'
 import NewTripModal from '../containers/NewTripModal'
 import axios from 'axios'
 import Loader from '../components/Loader'
+import TripCard from '../containers/TripCard'
 
 export default class UserHomepage extends React.Component{
     constructor(props){
@@ -76,19 +77,7 @@ export default class UserHomepage extends React.Component{
                             <>
                             { trips.map(trip =>
                                 <Col xs="12" lg="4" className="my-3" key={trip.id}>
-                                    <a href={"/user/"+user.username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
-                                    <Card className="shadow trip-card">
-                                        { trip.trip_img_url === "" ?
-                                            <CardImg top src={defaults} alt="Card image cap" className="trip-card-img trip-card-front-element" />
-                                            :
-                                            <CardImg top src={trip.s3_img_url} alt="Card image cap" className="trip-card-img trip-card-front-element" />
-                                        }
-                                        <CardBody className="card-front-element trip-card-body" >
-                                            <CardTitle className="trip-card-title">{trip.trip_name}</CardTitle>
-                                            <CardSubtitle className="trip-card-subtitle">{trip.trip_desc}</CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                    </a>
+                                    <TripCard parentPage={this} trip={trip} />
                                 </Col>
                                 )}
                             </>
