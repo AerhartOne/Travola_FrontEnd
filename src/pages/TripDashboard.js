@@ -49,29 +49,31 @@ export default class TripDashboard extends React.Component{
         return(
             <Container fluid className="dashboard-container d-flex flex-column justify-content-center align-items-center px-0 py-0">
                 <NavBar/>
-
-
+                <Row xs="12" className="mt-3 my-0 w-75">
+                    <Col className="w-100">
+                            <EventAdderButton trip_name={this.props.match.params.trip_name} parentPage={this} parentTrip={this.state.trip}/>
+                    </Col>
+                </Row>
                 { isLoading == false ?
-                    <>
-                    <Row xs="12" className="mt-3 my-0 w-75">
-                        <Col className="w-100">
-                                <EventAdderButton trip_name={this.props.match.params.trip_name} parentPage={this} parentTrip={this.state.trip}/>
-                        </Col>
-                    </Row>
-                    <Row className="w-75">
-                    {
-                        this.state.tripEvents.map(tripEvent => 
-                            <EventCard tripEvent={tripEvent}/>
-                        )
-                    }
-                    </Row>
-                    </>
+                    tripEvents.length > 0 ?
+                        <>
+                            <Row className="w-75">
+                                {
+                                    this.state.tripEvents.map(tripEvent => 
+                                        <EventCard tripEvent={tripEvent}/>
+                                    )
+                                }
+                            </Row>
+                        </>
+                    :
+                        <Row className="w-75 py-5">
+                            <h2 className="display-3">This trip doesn't have any events yet. Add some!</h2>
+                        </Row>
                 :
-                    <>
+                <>
                     <Loader />
-                    </>
+                </>
                 }
-
             </Container>
         );
     }
