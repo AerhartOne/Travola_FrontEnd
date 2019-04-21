@@ -1,4 +1,5 @@
-import React from 'react'     
+import React from 'react';
+import { Redirect } from 'react-router';
 import { 
         Modal,
         ModalHeader,
@@ -14,6 +15,7 @@ import {
         Button
     } from 'reactstrap'
 import axios from 'axios'
+// import console = require('console');
 
 export default class NewTripModal extends React.Component{
     constructor(props){
@@ -22,7 +24,9 @@ export default class NewTripModal extends React.Component{
         this.state={
             name:"",
             desc:"",
-            display_img: undefined
+            displayImg: undefined,
+            parentPage: props.parentPage,
+
         }
     }
 
@@ -42,37 +46,38 @@ export default class NewTripModal extends React.Component{
     handleFileUploadChange = (e) => {
         if (e.target.files[0] != undefined) {
             this.setState({
-                display_img:e.target.files[0]
+                displayImg:e.target.files[0]
             })
         } else {
             this.setState({
-                display_img:null
+                displayImg:null
             })
         }
     }
 
     handleSubmit = (e) => {
+        e.preventDefault()
         let formData = new FormData()
         formData.append('user_id',localStorage.getItem('id'))
         formData.append('trip_name',this.state.name)
         formData.append('trip_desc',this.state.desc)
-        formData.append('trip_img', this.state.display_img)
+        formData.append('trip_img', this.state.displayImg)
         axios({
             method:"POST",
             url:"http://localhost:5000/api/v1/trips/new",
             data:formData,
-            config: { 
-                headers: {
-                    'Authorization' : 'Bearer ' + localStorage.getItem("jwt_token"),
-                    'Content-Type': 'multipart/form-data'
-                }
+            headers: {
+                'Authorization' : 'Bearer ' + localStorage.getItem("jwt_token"),
+                'Content-Type': 'multipart/form-data'
             }
+        }).then(result => {
+            this.state.parentPage.retrieveTripData()
         })
     }
 
     // Page Render
     render(){
-        const { name, display_img } = this.state
+        const { name, displayImg } = this.state
         const {toggle , modal} = this.props
         return(
             <>

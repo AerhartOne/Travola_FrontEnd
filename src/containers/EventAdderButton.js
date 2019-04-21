@@ -19,6 +19,7 @@ import axios from 'axios'
 class EventAdderButton extends Component {
     constructor(props){
     super(props);
+    
     this.state = {
         modal: false,
         location:'',
@@ -64,6 +65,7 @@ handleDate = (e) =>{
 }
 
 handleSubmit = (e) =>{
+    e.preventDefault()
     console.log(this.state)
     let formData = new FormData()
     formData.set('date_time',this.state.date_time)
@@ -74,12 +76,12 @@ handleSubmit = (e) =>{
         method:"POST",
         url:"http://localhost:5000/api/v1/trip_events/new",
         data:formData,
-        config:{ 
-            headers : {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt_token'),
-                'Content-Type':'multipart/form-data'
-            }
+        headers : {
+            'Authorization': 'Bearer ' + localStorage.getItem('jwt_token'),
+            'Content-Type':'multipart/form-data'
         }
+    }).then(result => {
+        this.props.parentPage.getAllTripData()
     })
 }
     render() {
