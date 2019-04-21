@@ -40,10 +40,6 @@ export default class TripDashboard extends React.Component{
         });
     }
 
-    getTripEventData() {
-        
-    }
-
     render(){
         const { trip, tripEvents, isLoading } = this.state
         return(
@@ -60,7 +56,7 @@ export default class TripDashboard extends React.Component{
                             <Row className="w-75">
                                 {
                                     this.state.tripEvents.map(tripEvent => 
-                                        <EventCard tripEvent={tripEvent}/>
+                                        <EventCard tripEvent={tripEvent} parentPage={this}/>
                                     )
                                 }
                             </Row>
