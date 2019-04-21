@@ -63,7 +63,7 @@ export default class TripDashboard extends React.Component{
                         </>
                     :
                         <Row className="w-75 py-5">
-                            <h2 className="display-3">This trip doesn't have any events yet. Add some!</h2>
+                            <h2 className="display-3 w-100 text-center">This trip doesn't have any events yet. Add some!</h2>
                         </Row>
                 :
                 <>
