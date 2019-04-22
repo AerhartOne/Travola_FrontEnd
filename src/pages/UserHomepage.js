@@ -69,7 +69,7 @@ export default class UserHomepage extends React.Component{
                             <>
                             { trips.map(trip =>
                                 <Col xs="12" lg="4" className="my-3" key={trip.id}>
-                                    <TripCard parentPage={this} trip={trip} username={this.props.match.params.username} />
+                                    <TripCard parentPage={this} trip={trip} user={user} />
                                 </Col>
                                 )}
                             </>

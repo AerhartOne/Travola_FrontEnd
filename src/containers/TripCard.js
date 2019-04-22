@@ -18,7 +18,7 @@ class TripCard extends Component {
 
         this.state = {
             trip: this.props.trip,
-            username:this.props.username
+            user:this.props.user
         }
     }
 
@@ -36,9 +36,9 @@ class TripCard extends Component {
     }
 
     render() {
-        const { trip , username } = this.state
+        const { trip , user } = this.state
         return (
-            <a href={"/user/"+username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
+            <a href={"/user/"+user.username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
             <Card className="shadow trip-card">
                 <Form onSubmit={this.handleDelete}>
                     <Button type="submit" color='danger' className='close-button px-3'>X</Button>
