@@ -10,6 +10,7 @@ import UserSettingPage from './pages/UserSettingPage';
 import TripDashboard from './pages/TripDashboard';
 import SignInForm from './containers/SignInForm';
 import SignUpForm from './containers/SignUpForm';
+import SubscriptionPage from './pages/SubscriptionPage'
 
 
 class App extends Component {
@@ -79,6 +80,14 @@ class App extends Component {
             }}
           />
           
+          <Route exact strict path = "/user/:username/subscriptions"
+            component = {props => {
+              return (
+                <SubscriptionPage {...props} />
+              )
+            }}
+          />
+
         </Router>
       </>
     );

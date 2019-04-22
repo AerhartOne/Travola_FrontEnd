@@ -58,6 +58,9 @@ export default class NavBar extends React.Component{
                         <DropdownItem href={"/user/"+this.state.username+"/profile"}>
                             Profile
                         </DropdownItem>
+                        <DropdownItem href={"/user/"+this.state.username+"/subscriptions"}>
+                            Manage Subscription
+                        </DropdownItem>
                         <DropdownItem href={"/user/"+this.state.username+"/setting"}>
                             Account Setting
                         </DropdownItem>

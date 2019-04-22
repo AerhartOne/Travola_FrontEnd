@@ -1,0 +1,22 @@
+html {
+    background: #fae596;
+}
+
+.display-2 {
+    font-size: 0.2rem;
+}
+
+#user-detail-section {
+    background: #3fb0ac;
+    color: white;
+}
+
+#trip-history-section {
+    background: transparent;
+    color: darkslategray;
+}
+
+#main-container{
+    background: #fae596;
+    /* margin-top:55px; */
+}
