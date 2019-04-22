@@ -29,9 +29,9 @@ class EventCardContent extends Component {
       photos: [],
       fileToUpload: undefined,
       photoToUpload: undefined,
-      event_name:'',
+      eventName:'',
       desc:'',
-      date_time:'',
+      dateTime:'',
       location:'',
       modal: false,
       editMode: false
@@ -86,16 +86,16 @@ class EventCardContent extends Component {
 
   populateFieldsFromPropsTripEvent() {
     this.setState({
-      event_name: this.props.tripEvent.event_name,
+      eventName: this.props.tripEvent.event_name,
       desc: this.props.tripEvent.desc,
       location: this.props.tripEvent.location,
-      date_time: this.props.tripEvent.date_time
+      dateTime: this.props.tripEvent.date_time
     })
   }
 
   changeEventName(e) {
     this.setState ({
-      event_name: e.target.value
+      eventName: e.target.value
     })
   }
 
@@ -113,7 +113,7 @@ class EventCardContent extends Component {
 
   changeDateTime(e) {
     this.setState ({
-      date_time: e.target.value
+      dateTime: e.target.value
     })
   }
 
@@ -139,8 +139,8 @@ class EventCardContent extends Component {
     let jwt_token = localStorage.getItem('jwt_token')
     console.log(this.state)
     let formData = new FormData()
-    formData.set('event_name',this.state.event_name)
-    formData.set('date_time',this.state.date_time)
+    formData.set('event_name',this.state.eventName)
+    formData.set('date_time',this.state.dateTime)
     formData.set('location',this.state.location)
     formData.set('desc',this.state.desc)
 
@@ -185,7 +185,7 @@ class EventCardContent extends Component {
 }
 
   render() {
-    const {files, photos, fileToUpload, photoToUpload, event_name, desc, date_time, location, modal, editMode} = this.state
+    const {files, photos, fileToUpload, photoToUpload, eventName, desc, dateTime, location, modal, editMode} = this.state
     const Map = ReactMapBoxG1( {accessToken: 'pk.eyJ1Ijoic3V6dWtpc3RldmVuIiwiYSI6ImNqdWpwcDhhYzFuczE0ZXAzamNkMWpvd2sifQ.PAW2yuz30KwTEL983iIN_g'} )
       return (
         <>
@@ -193,7 +193,7 @@ class EventCardContent extends Component {
         <Modal isOpen={modal} toggle={this.toggleModal} className={this.props.className}>
           <ModalHeader toggle={this.toggleModal}> 
           
-          <CardTitle>{event_name}</CardTitle>
+          <CardTitle>{eventName}</CardTitle>
           
           </ModalHeader>
             
@@ -203,7 +203,7 @@ class EventCardContent extends Component {
               <>
               <FormGroup className="EventCardContent">
                 <Label for="eventName">Event Name</Label>
-                <Input type="text" name="event_name" id="event-name" placeholder="Event Name" onChange={this.changeEventName} value={event_name} />
+                <Input type="text" name="event_name" id="event-name" placeholder="Event Name" onChange={this.changeEventName} value={eventName} />
               </FormGroup>
 
               <FormGroup>
@@ -227,7 +227,7 @@ class EventCardContent extends Component {
 
               <FormGroup className="EventCardContent">
                 <Label for="eventDate">Date/Time</Label>
-                <Input type="datetime-local" name="date" id="event-date" placeholder="Event Date" onChange={this.changeDateTime} value={date_time} />
+                <Input type="datetime-local" name="date" id="event-date" placeholder="Event Date" onChange={this.changeDateTime} value={dateTime} />
               </FormGroup>
 
               <FormGroup className="EventCardContent">
@@ -252,7 +252,7 @@ class EventCardContent extends Component {
               </>
             :
               <>
-                <CardSubtitle>Date/Time: {date_time}</CardSubtitle>
+                <CardSubtitle>Date/Time: {dateTime}</CardSubtitle>
                 { location ? <CardSubtitle>At: {location}</CardSubtitle> : null }
                 { desc ? <CardText className='my-3'>Description: {desc}</CardText> : null }
                 <Container fluid className='text-center mt-3'>
