@@ -31,6 +31,7 @@ export default class SubscriptionPage extends React.Component{
             paymentNonce: '',
             loadingPaymentForm: true
         }
+
     }
 
     componentDidMount(){
@@ -60,20 +61,46 @@ export default class SubscriptionPage extends React.Component{
                 loadingPaymentForm: false
             })
             console.log(this.state)
-            this.createPaymentForm()
+            this.createPaymentForm(this)
             return result
         })
     }
 
-    createPaymentForm() {
+    createPaymentForm(parentPage) {
         dropin.create({
             authorization: this.state.paymentToken,
-            container: '#payment-form-container'
-          })
+            container: '#payment-form-container',
+        })
+        .then(dropinInstance => {
+            let submitButton = document.querySelector('#subscribe-submit-button')
+
+            submitButton.addEventListener('click', function () {
+                dropinInstance.requestPaymentMethod()
+                .then(payload => {
+                    parentPage.paymentNonceReceived(payload, parentPage.state.user.id)
+                })
+            })
+
+        })
+
     }
 
-    handleSubmit(e) {
+    paymentNonceReceived(received_payload, user_id) {
+        let formData = new FormData()
 
+        formData.set('payment_method_nonce', received_payload)
+        formData.set('user_id', user_id)
+
+        axios.post("http://localhost:5000/api/v1/subscriptions/new", formData)
+        .then(result => {
+            console.log(result)
+            this.getSubscriptionData()
+            this.getPaymentToken()
+        })
+    }
+
+    disableRefresh(e) {
+        e.preventDefault()
     }
 
     render(){
@@ -83,14 +110,14 @@ export default class SubscriptionPage extends React.Component{
             <script src="https://js.braintreegateway.com/web/dropin/1.17.2/js/dropin.min.js"></script>
             <Container fluid className="d-flex flex-column px-0 align-items-center w-100" id="main-container">
                 <NavBar/>
-                <Row className="w-100 py-3 d-flex flex-column align-items-center justify-content-center">
+                <Row className="w-100 py-3 d-flex flex-column text-center align-items-center justify-content-center">
                     <h1 className="my-0 display-1">{user.username}'s Subscriptions</h1>
                     {
                         subscriptions.subscription_is_active ? 
                             <h2 className='display-4 py-5'>You have a premium subscription!</h2>
                         :
                             <>
-                            <h2 className='display-4 py-5'>You don't have a premium subscription. Get one now and enjoy these amazing features!</h2>
+                            <h2 className='display-4 py-5'>You don't have a premium subscription. Get one now for just USD5.00 and enjoy these amazing features!</h2>
 
                             <Container fluid className='w-75 text-center my-5'>
                                 <Row className='w-100'>
@@ -134,7 +161,7 @@ export default class SubscriptionPage extends React.Component{
                                 <h3 className='display-4 py-3'>Subscribe now!</h3>
                                 <Form className='d-flex flex-column align-items-center justify-content-center'>
                                     <div id='payment-form-container'></div>
-                                    <Button color='success' onClick={this.handleSubmit} className='w-100'>Subscribe!</Button>
+                                    <Button id='subscribe-submit-button' color='success' onClick={this.disableRefresh} className='w-100'>Subscribe!</Button>
                                 </Form>
                                 </>
                             }
