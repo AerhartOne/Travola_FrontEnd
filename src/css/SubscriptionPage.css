@@ -20,3 +20,7 @@ html {
     background: #fae596;
     /* margin-top:55px; */
 }
+
+.feature-card {
+    background: transparent;
+}

@@ -8,7 +8,7 @@ import {
         Card,
         CardBody,
         CardTitle,
-        CardText,
+        CardSubtitle,
         CardImg,
         Form,
         Input,
@@ -90,15 +90,53 @@ export default class SubscriptionPage extends React.Component{
                             <h2 className='display-4 py-5'>You have a premium subscription!</h2>
                         :
                             <>
-                            <h2 className='display-4 py-5'>You don't have a premium subscription. Get one now!</h2>
+                            <h2 className='display-4 py-5'>You don't have a premium subscription. Get one now and enjoy these amazing features!</h2>
+
+                            <Container fluid className='w-75 text-center my-5'>
+                                <Row className='w-100'>
+                                    <Col className='d-flex flex-column justify-content-end feature-card'>
+                                        <Card className='px-3 py-3 h-100'>
+                                            <CardTitle >
+                                                ZIP Downloads!
+                                            </CardTitle>
+                                            <CardSubtitle>
+                                                Download your trips as a .zip file. Handy for out-of-the-way places without internet!
+                                            </CardSubtitle>
+                                        </Card>
+                                    </Col>
+                                    <Col className='d-flex flex-column justify-content-end feature-card'>
+                                        <Card className='px-3 py-3 h-100'>
+                                            <CardTitle >
+                                                Higher friend limit on trips!
+                                            </CardTitle>
+                                            <CardSubtitle>
+                                                Plan on travelling with big groups? We've got you covered. Keep all your travelling partners in the loop!
+                                            </CardSubtitle>
+                                        </Card>
+                                    </Col>
+                                    <Col className='d-flex flex-column justify-content-end feature-card'>
+                                        <Card className='px-3 py-3 h-100'>
+                                            <CardTitle>
+                                                More Storage Capacity!
+                                            </CardTitle>
+                                            <CardSubtitle>
+                                                For more meticulous planners, we offer all the storage space you could possibly need for stashing your precious information.
+                                            </CardSubtitle>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                            </Container>
 
                             { loadingPaymentForm ?
                                 <Loader />
                             :
+                                <>
+                                <h3 className='display-4 py-3'>Subscribe now!</h3>
                                 <Form className='d-flex flex-column align-items-center justify-content-center'>
                                     <div id='payment-form-container'></div>
                                     <Button color='success' onClick={this.handleSubmit} className='w-100'>Subscribe!</Button>
                                 </Form>
+                                </>
                             }
                             </>
                     }
