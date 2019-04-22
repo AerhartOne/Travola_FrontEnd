@@ -6,6 +6,7 @@ import {
 } from 'reactstrap'
 import '../css/UserSetting.css'
 import '../css/NewTripForm.css'
+import Axios from 'axios';
 
 
 
@@ -14,15 +15,36 @@ class SettingForm extends React.Component {
         super (props);
 
         this.state = {
-            first_name: '',
-            last_name: '',
             username: '',
+            email: '',
             password: '',
-            bio:''
+            firstName: '',
+            lastName: '',
+            bioText: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.getUserData()
+    }
+
+    getUserData() {
+        let user_id = localStorage.getItem('id')
+        Axios.get("http://localhost:5000/api/v1/users/"+user_id)
+        .then( result => {
+            let returned_data = result.data.data
+            console.log(returned_data)
+            this.setState({ 
+                username: returned_data.username,
+                email: returned_data.email,
+                firstName: returned_data.first_name,
+                lastName: returned_data.last_name,
+                bioText: returned_data.bio_text,
+            })
+        })
     }
 
     handleChange(e) {
@@ -31,23 +53,34 @@ class SettingForm extends React.Component {
         let name = target.name;
 
         this.setState({
-            [name]: value
+            [name]: target.value
         });
+        console.log(this.state)
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        
-        this.setState({
-            first_name: '',
-            last_name: '',
-            username: '',
-            password: '',
-            bio:''
+        let formData = new FormData
 
+        formData.append('user_id', localStorage.getItem('id'))
+        formData.append('username', this.state.username)
+        formData.append('email', this.state.email)
+        formData.append('password', this.state.password)
+        formData.append('first_name', this.state.firstName)
+        formData.append('last_name', this.state.lastName)
+        formData.append('bio_text', this.state.bioText)
+
+        Axios.post("http://localhost:5000/api/v1/users/edit", formData, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt_token'),
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(result => {
+            console.log('The form was submitted with the following data:');
+            console.log(this.state);
+            this.getUserData()
         })
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
+        
     }
 
 
@@ -61,34 +94,34 @@ class SettingForm extends React.Component {
                                 <h1 className="display-1 title">Edit Account Information</h1>
 
                                 <div className="formfield">
-                                    <input type="text" name="username" className="formfield_input" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+                                    <input id='input-username' type="text" name="username" className="formfield_input" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="formfield">
-                                    <input type="email" name="email" className="formfield_input" placeholder="Email" value={this.state.password} onChange={this.handleChange} />
+                                    <input id='input-email' type="email" name="email" className="formfield_input" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="formfield">
-                                    <input type="password" name="password" className="formfield_input" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                    <input id='input-password' type="password" name="password" className="formfield_input" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </div>
 
                                 <Container fluid className="px-0 w-100">
                                     <Row>
                                         <Col>
                                             <div className="formfield">
-                                                <input type="text" name="first_name" className="formfield_input" placeholder="First Name" value={this.state.first_name} onChange={this.handleChange} />
+                                                <input id='input-first-name' type="text" name="firstName" className="formfield_input" placeholder="First Name" value={this.state.firstName} onChange={this.handleChange} />
                                             </div>
                                         </Col>
                                         <Col>
                                             <div className="formfield">
-                                                <input type="text" name="last_name" className="formfield_input" placeholder="Last Name" value={this.state.last_name} onChange={this.handleChange} />
+                                                <input id='input-last_name' type="text" name="lastName" className="formfield_input" placeholder="Last Name" value={this.state.lastName} onChange={this.handleChange} />
                                             </div>
                                         </Col>
-                                    </Row>
+                                    </Row> 
                                 </Container>
 
                                 <div className="formfield">
-                                    <input type="textarea" name="bio" className="formfield_input" placeholder="Write a little about yourself." value={this.state.bio} onChange={this.handleChange} />
+                                    <input id='input-bio-text' type="textarea" name="bioText" className="formfield_input" placeholder="Write a little about yourself." value={this.state.bioText} onChange={this.handleChange} />
                                 </div>
 
                                 <button type="submit" onClick={this.handleSubmit} className="settingfield_button w-100">Save details</button>
