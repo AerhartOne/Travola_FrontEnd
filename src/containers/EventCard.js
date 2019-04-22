@@ -61,7 +61,7 @@ class EventCard extends Component {
                         }
                     </CardBody>
                     <CardFooter>
-                        <EventCardContent />
+                        <EventCardContent parentPage={this}/>
                     </CardFooter>
                 </Card>
             // </Col>
