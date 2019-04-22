@@ -17,12 +17,11 @@ class EventCardContent extends Component {
     super(props);
     this.state = {
       modal: false,
-      nestedModal: false,
-      closeAll: false
+      // nestedModal: false,
+      closeAll: false,
     };
 
     this.toggle = this.toggle.bind(this);
-    this.toggleNested = this.toggleNested.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
   }
 
@@ -32,13 +31,6 @@ class EventCardContent extends Component {
     }));
   }
 
-  toggleNested() {
-    this.setState({
-      nestedModal: !this.state.nestedModal,
-      closeAll: false
-    });
-  }
-
   toggleAll() {
     this.setState({
       nestedModal: !this.state.nestedModal,
@@ -46,7 +38,8 @@ class EventCardContent extends Component {
     });
   }
 
-    render() {
+  
+  render() {
         return (
             <div>
                 <Button color="info" onClick={this.toggle} className="w-100">View Event Details</Button>
@@ -58,47 +51,28 @@ class EventCardContent extends Component {
                         <Form>
 
                         <FormGroup>
-                              <Label for="eventDescription">Event Description</Label>
-                              <Button color="success" className="EventCardContentBtn" 
-                              onClick={this.toggleNested} block>Add Description</Button>
-                                <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                                    <ModalHeader>Nested Modal title</ModalHeader>
-                                    <ModalBody>
-                                      <FormGroup>
-                                        <Label for="eventDescription">Event Description</Label>
-                                        <Input type="textarea" name="text" id="event-description" />
-                                      </FormGroup>
-                                    </ModalBody>
-                                    <ModalFooter>
-                                    <Button color="primary" onClick={this.toggleNested}>Update</Button>
-                                    <Button color="secondary" onClick={this.toggleNested}>Close</Button>
-                                  </ModalFooter>
-                                </Modal>
-                            </FormGroup>
+                            <Label for="eventDescription">Event Description</Label>
+                            <Input type="textarea" name="text" id="event-description" />
+                        </FormGroup>
 
                             <FormGroup className="EventCardContent">
                               <Label for="eventFile">Event File Attachment</Label>
                               <CustomInput type="file" id="event-file" name="file" />
-                              <Button color="success" className="EventCardContentBtn" block>Add File</Button>
                             </FormGroup>
 
                             <FormGroup className="EventCardContent">
                               <Label for="eventPhotos">Event Photos</Label>
                               <CustomInput type="file" id="event-photos" name="image" />
-                              <Button color="success" className="EventCardContentBtn" block>Upload Photos</Button>
                             </FormGroup>
                           
-                            
                             <FormGroup className="EventCardContent">
                               <Label for="eventName">Event Name</Label>
                               <Input type="text" name="name" id="event-name" placeholder="edit your event name" />
-                              <Button color="info" className="EventCardContentBtn" block>Edit</Button>
                             </FormGroup>
 
                             <FormGroup className="EventCardContent">
                               <Label for="eventLocation">Event Location</Label>
                               <Input type="location" name="location" id="event-location" placeholder="edit your event location" />
-                              <Button color="info" className="EventCardContentBtn" block>Edit</Button>
                             </FormGroup>
 
                             <FormGroup className="EventCardContent">
@@ -109,7 +83,6 @@ class EventCardContent extends Component {
                                 id="event-date"
                                 placeholder="change your event date"
                               />
-                              <Button color="info" className="EventCardContentBtn" block>Edit</Button>
                             </FormGroup>
 
                             <FormGroup className="EventCardContent">
@@ -120,10 +93,14 @@ class EventCardContent extends Component {
                                 id="event-time"
                                 placeholder="change your event time"
                               />
-                              <Button color="info" className="EventCardContentBtn" block>Edit</Button>
                             </FormGroup>
-
+                            
                           </Form>
+
+                          <ModalFooter>
+                            <Button type="submit" color="primary" onClick={this.toggle}>Submit</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                          </ModalFooter>
                           
                       </ModalBody>
                 </Modal>
