@@ -16,12 +16,13 @@ import axios from 'axios'
 import '../css/TripCard.css'
 import defaults from '../images/default-image.png'
 
-class EventCard extends Component {
+class TripCard extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            trip: this.props.trip
+            trip: this.props.trip,
+            username:this.props.username
         }
     }
 
@@ -39,9 +40,9 @@ class EventCard extends Component {
     }
 
     render() {
-        const { trip } = this.state
+        const { trip , username } = this.state
         return (
-            <a href={"/user/"+trip.parent_user.username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
+            <a href={"/user/"+username+"/dashboard/"+trip.trip_name} className="px-0 py-0 h-100 trip-card-button">
             <Card className="shadow trip-card">
                 <Form onSubmit={this.handleDelete}>
                     <Button type="submit" color='danger' className='close-button px-3'>X</Button>
@@ -61,4 +62,4 @@ class EventCard extends Component {
     }
 }
 
-export default EventCard;
+export default TripCard;

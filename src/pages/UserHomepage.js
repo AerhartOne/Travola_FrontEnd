@@ -22,6 +22,8 @@ import axios from 'axios'
 import Loader from '../components/Loader'
 import TripCard from '../containers/TripCard'
 
+
+
 export default class UserHomepage extends React.Component{
     constructor(props){
         super(props);
@@ -77,7 +79,7 @@ export default class UserHomepage extends React.Component{
                             <>
                             { trips.map(trip =>
                                 <Col xs="12" lg="4" className="my-3" key={trip.id}>
-                                    <TripCard parentPage={this} trip={trip} />
+                                    <TripCard parentPage={this} trip={trip} username={this.props.match.params.username} />
                                 </Col>
                                 )}
                             </>
