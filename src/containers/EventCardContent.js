@@ -19,6 +19,7 @@ import {
 } from 'reactstrap';
 import axios from 'axios'
 import '../css/EventCardContent.css'
+import ReactMapBoxG1, { Layer, Feature } from 'react-mapbox-gl';
 
 class EventCardContent extends Component {
     constructor(props) {
@@ -185,12 +186,16 @@ class EventCardContent extends Component {
 
   render() {
     const {files, photos, fileToUpload, photoToUpload, event_name, desc, date_time, location, modal, editMode} = this.state
+    const Map = ReactMapBoxG1( {accessToken: 'pk.eyJ1Ijoic3V6dWtpc3RldmVuIiwiYSI6ImNqdWpwcDhhYzFuczE0ZXAzamNkMWpvd2sifQ.PAW2yuz30KwTEL983iIN_g'} )
       return (
         <>
         <Button color="info" onClick={this.toggleModal} className="w-100">View Event Details</Button>
-
         <Modal isOpen={modal} toggle={this.toggleModal} className={this.props.className}>
-          <ModalHeader toggle={this.toggleModal}> <CardTitle>{event_name}</CardTitle> </ModalHeader>
+          <ModalHeader toggle={this.toggleModal}> 
+          
+          <CardTitle>{event_name}</CardTitle>
+          
+          </ModalHeader>
             
         <Form onSubmit={this.handleSubmit}>
           <ModalBody>
@@ -209,7 +214,16 @@ class EventCardContent extends Component {
               <FormGroup className="EventCardContent">
                 <Label for="eventLocation">Location</Label>
                 <Input type="location" name="location" id="event-location" placeholder="Location" onChange={this.changeLocation} value={location}/>
+                <Map style="mapbox://styles/mapbox/streets-v9" containerStyle={{width: "100%", height: "400px"}}>
+                    <Layer
+                      type="symbol"
+                      id="marker"
+                      layout={{ "icon-image": "marker-15" }}>
+                      <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+                    </Layer>
+                </Map>
               </FormGroup>
+
 
               <FormGroup className="EventCardContent">
                 <Label for="eventDate">Date/Time</Label>
