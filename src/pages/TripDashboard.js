@@ -56,7 +56,9 @@ export default class TripDashboard extends React.Component{
                             <Row className="w-75">
                                 {
                                     this.state.tripEvents.map(tripEvent => 
-                                        <EventCard tripEvent={tripEvent} parentPage={this}/>
+                                        <Col xs="12" md="4" key={tripEvent.id} className="py-3 px-3" >
+                                            <EventCard tripEvent={tripEvent} parentPage={this} />
+                                        </Col>
                                     )
                                 }
                             </Row>

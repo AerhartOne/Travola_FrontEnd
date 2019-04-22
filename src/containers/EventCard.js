@@ -41,7 +41,7 @@ class EventCard extends Component {
     render() {
         const { tripEvent } = this.state
         return (
-            <Col xs="12" md="4" key={tripEvent.id} className="py-3 px-3" >
+            // <Col xs="12" md="4" key={tripEvent.id} className="py-3 px-3" >
                 <Card className="h-100">
                     <Form onSubmit={this.handleDelete}>
                         <Button type="submit" color='danger' className='close-button px-3'>X</Button>
@@ -50,12 +50,12 @@ class EventCard extends Component {
                     <CardBody>
                         <CardTitle>{tripEvent.event_name}</CardTitle>
                         <CardSubtitle>{tripEvent.date_time}</CardSubtitle>
-                        { tripEvent.location != '' ?
+                        { tripEvent.location !== '' ?
                             <CardSubtitle>At {tripEvent.location}</CardSubtitle>
                         :
                             null
                         }
-                        { tripEvent.desc != '' ?
+                        { tripEvent.desc !== '' ?
                             <CardText>{tripEvent.desc}</CardText>
                         :
                             null
@@ -65,7 +65,7 @@ class EventCard extends Component {
                         <EventCardContent />
                     </CardFooter>
                 </Card>
-            </Col>
+            // </Col>
         );
     }
 }
