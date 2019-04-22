@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { 
         Modal,
         ModalHeader,
@@ -44,7 +43,7 @@ export default class NewTripModal extends React.Component{
     }
 
     handleFileUploadChange = (e) => {
-        if (e.target.files[0] != undefined) {
+        if (e.target.files[0] !== undefined) {
             this.setState({
                 displayImg:e.target.files[0]
             })

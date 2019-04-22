@@ -50,7 +50,7 @@ export default class TripDashboard extends React.Component{
                             <EventAdderButton trip_name={this.props.match.params.trip_name} parentPage={this} parentTrip={this.state.trip}/>
                     </Col>
                 </Row>
-                { isLoading == false ?
+                { isLoading === false ?
                     tripEvents.length > 0 ?
                         <>
                             <Row className="w-75">

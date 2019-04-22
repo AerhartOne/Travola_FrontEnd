@@ -10,8 +10,7 @@ import {
         CardSubtitle, 
         Button,
         Col,
-        Form,
-        Input
+        Form
 } from 'reactstrap';
 import axios from 'axios'
 import '../css/EventCard.css'
@@ -27,7 +26,7 @@ class EventCard extends Component {
 
     handleDelete = e => {
         e.preventDefault()
-        let formData = new FormData
+        let formData = new FormData()
         formData.set('trip_event_id', this.state.tripEvent.id)
         axios.post("http://localhost:5000/api/v1/trip_events/delete",formData,{
             headers: {
@@ -50,12 +49,12 @@ class EventCard extends Component {
                     <CardBody>
                         <CardTitle>{tripEvent.event_name}</CardTitle>
                         <CardSubtitle>{tripEvent.date_time}</CardSubtitle>
-                        { tripEvent.location != '' ?
+                        { tripEvent.location !== '' ?
                             <CardSubtitle>At {tripEvent.location}</CardSubtitle>
                         :
                             null
                         }
-                        { tripEvent.desc != '' ?
+                        { tripEvent.desc !== '' ?
                             <CardText>{tripEvent.desc}</CardText>
                         :
                             null

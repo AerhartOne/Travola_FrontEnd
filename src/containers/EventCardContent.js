@@ -126,6 +126,12 @@ class EventCardContent extends Component {
                           </Form>
                           
                       </ModalBody>
+                      
+                      {/* <ModalFooter>
+                      <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                      <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                      </ModalFooter>  */}
+                      
                 </Modal>
             </div>
         );
@@ -133,8 +139,3 @@ class EventCardContent extends Component {
 }
 
 export default EventCardContent;
-
-{/* <ModalFooter>
-<Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-<Button color="secondary" onClick={this.toggle}>Cancel</Button>
-</ModalFooter>  */}

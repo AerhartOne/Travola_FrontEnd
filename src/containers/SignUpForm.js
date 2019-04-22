@@ -95,7 +95,7 @@ class SignUpForm extends Component {
 
                     <div className="row FormField d-flex justify-content-center">
                         <label className="FormField__CheckboxLabel">
-                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I understand and agree to all terms and conditions in the <a href="#" className="inline-link">Terms of Service</a>.
+                            <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I understand and agree to all terms and conditions in the <a href="/#" className="inline-link">Terms of Service</a>.
                         </label>
                     </div>
 
