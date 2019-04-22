@@ -1,0 +1,31 @@
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.close-button {
+    display: block;
+    position: absolute;
+    top: -1%;
+    right: -1%;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    background: maroon;
+    border: 1px solid transparent;
+    border-radius: 100%;
+}
+
+.photo-thumbnail {
+    width: 100%;
+    object-fit: cover;
+}

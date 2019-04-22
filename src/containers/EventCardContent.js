@@ -18,6 +18,7 @@ import {
         Col
 } from 'reactstrap';
 import axios from 'axios'
+import '../css/EventCardContent.css'
 
 class EventCardContent extends Component {
     constructor(props) {
@@ -25,8 +26,8 @@ class EventCardContent extends Component {
     this.state = {
       files: [],
       photos: [],
-      filesToUpload: [],
-      photosToUpload: [],
+      fileToUpload: undefined,
+      photoToUpload: undefined,
       event_name:'',
       desc:'',
       date_time:'',
@@ -58,6 +59,8 @@ class EventCardContent extends Component {
 
   componentDidMount() {
     this.populateFieldsFromPropsTripEvent()
+    this.getFiles()
+    this.getPhotos()
   }
 
   getFiles() {
@@ -66,6 +69,7 @@ class EventCardContent extends Component {
       this.setState({
         files: result.data.data
       })
+      console.log(this.state)
     })
   }
 
@@ -75,6 +79,7 @@ class EventCardContent extends Component {
       this.setState({
         photos: result.data.data
       })
+      console.log(this.state)
     })
   }
 
@@ -112,24 +117,17 @@ class EventCardContent extends Component {
   }
 
   handleFileUploadChange = (e) => {
-    let lastFileIndex = e.target.files.length - 1
-    if (e.target.files[lastFileIndex] !== undefined) {
-      let newFileList = this.state.filesToUpload
-      newFileList.push(e.target.files[lastFileIndex])
+    if (e.target.files[0] !== undefined) {
       this.setState({
-        files: newFileList
+        fileToUpload: e.target.files[0]
       })
-      console.log(this.state.filesToUpload)
     }
   }
 
   handlePhotoUploadChange = (e) => {
-    let lastFileIndex = e.target.files.length - 1
-    if (e.target.files[lastFileIndex] !== undefined) {
-      let newPhotoList = this.state.photosToUpload
-      newPhotoList.push(e.target.files[lastFileIndex])
+    if (e.target.files[0] !== undefined) {
       this.setState({
-        photos: newPhotoList
+        photoToUpload: e.target.files[0]
       })
       console.log(this.state.filesToUpload)
     }
@@ -145,22 +143,48 @@ class EventCardContent extends Component {
     formData.set('location',this.state.location)
     formData.set('desc',this.state.desc)
 
-    axios({
+    let fileData = new FormData()
+    fileData.set('file', this.state.fileToUpload)
+
+    let photoData = new FormData()
+    photoData.set('photo', this.state.photoToUpload)
+
+    Promise.all([
+      axios({
+          method:"POST",
+          url:"http://localhost:5000/api/v1/trip_events/" + this.props.tripEvent.id + "/edit",
+          data:formData,
+          headers : {
+              'Authorization': 'Bearer ' + jwt_token,
+              'Content-Type':'multipart/form-data'
+          }
+      }),
+      axios({
         method:"POST",
-        url:"http://localhost:5000/api/v1/trip_events/" + this.props.tripEvent.id + "/edit",
-        data:formData,
+        url:"http://localhost:5000/api/v1/trip_events/" + this.props.tripEvent.id + "/files/new",
+        data:fileData,
         headers : {
             'Authorization': 'Bearer ' + jwt_token,
             'Content-Type':'multipart/form-data'
         }
-    }).then(result => {
+      }),
+      axios({
+        method:"POST",
+        url:"http://localhost:5000/api/v1/trip_events/" + this.props.tripEvent.id + "/photos/new",
+        data:photoData,
+        headers : {
+            'Authorization': 'Bearer ' + jwt_token,
+            'Content-Type':'multipart/form-data'
+        }
+      })
+    ]).then(result => {
       this.setState({modal: false})
       this.props.parentPage.getAllTripData()
     })
 }
 
   render() {
-    const {files, photos, filesToUpload, photosToUpload, event_name, desc, date_time, location, modal} = this.state
+    const {files, photos, fileToUpload, photoToUpload, event_name, desc, date_time, location, modal, editMode} = this.state
       return (
         <>
         <Button color="info" onClick={this.toggleModal} className="w-100">View Event Details</Button>
@@ -195,30 +219,22 @@ class EventCardContent extends Component {
               <FormGroup className="EventCardContent">
                 <Label for="eventFile">Attach files:</Label>
                 <CustomInput type="file" id="event-file" name="file" onChange={this.handleFileUploadChange} />
+                { fileToUpload ?
+                  <CardSubtitle>Selected file: {fileToUpload.name}</CardSubtitle>
+                  :
+                  null
+                }
               </FormGroup>
-
-              <Container>
-                <Label>Selected files:</Label>
-                <ul>
-                  { filesToUpload.map(f =>
-                    <li key={f.name}>{f.name}</li>
-                  )}
-                </ul>
-              </Container>
 
               <FormGroup className="EventCardContent">
                 <Label for="eventPhotos">Event Photos</Label>
                 <CustomInput type="file" id="event-photos" name="image" onChange={this.handlePhotoUploadChange} />
+                { photoToUpload ?
+                  <CardSubtitle>Selected photo: {photoToUpload.name}</CardSubtitle>
+                  :
+                  null
+                }
               </FormGroup>
-
-              <Container>
-                <Label>Selected photos:</Label>
-                <ul>
-                  { photosToUpload.map(p =>
-                    <li key={p.name}>{p.name}</li>
-                  )}
-                </ul>
-              </Container>
               </>
             :
               <>
@@ -229,20 +245,24 @@ class EventCardContent extends Component {
                     <Row>
                       <Col>
                         <CardSubtitle>Files Uploaded</CardSubtitle>
-                        <ul>
+                        <ul className='text-left'>
                           { files.map(f =>
-                            <li key={f.name}>{f.name}</li>
+                            <li key={f.url}><a href={f.s3_url}>{f.title}</a></li>
                           )}
                         </ul>
                       </Col>
 
                       <Col>
                         <CardSubtitle>Photos Uploaded</CardSubtitle>
-                        <ul>
-                          { photos.map(p =>
-                            <li key={p.name}>{p.name}</li>
-                          )}
-                        </ul>
+                        <Container fluid>
+                          <Row className='d-flex flex-wrap'>
+                            { photos.map(p =>
+                              <Col xs='6' className='px-1 py-1'>
+                                <a href={p.s3_url}><img src={p.s3_url} className='photo-thumbnail' /></a>
+                              </Col>
+                            )}
+                          </Row>
+                        </Container>
                       </Col>
                     </Row>
                 </Container>
