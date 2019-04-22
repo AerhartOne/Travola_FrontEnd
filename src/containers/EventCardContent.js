@@ -214,7 +214,7 @@ class EventCardContent extends Component {
               <FormGroup className="EventCardContent">
                 <Label for="eventLocation">Location</Label>
                 <Input type="location" name="location" id="event-location" placeholder="Location" onChange={this.changeLocation} value={location}/>
-                <Map style="mapbox://styles/mapbox/streets-v9" containerStyle={{width: "100%", height: "400px"}}>
+                <Map style="mapbox://styles/mapbox/streets-v11" containerStyle={{width: "100%", height: "400px"}}>
                     <Layer
                       type="symbol"
                       id="marker"
