@@ -123,12 +123,6 @@ class EventCardContent extends Component {
                               <Button color="info" className="EventCardContentBtn" block>Edit</Button>
                             </FormGroup>
 
-                            <FormGroup className="EventCardContent">
-                              <Label for="eventLocation">Event Location</Label>
-                              <Input type="location" name="location" id="event-location" placeholder="edit your event location" />
-                              <Button color="info" className="EventCardContentBtn" block>Edit</Button>
-                            </FormGroup>
-
                           </Form>
                           
                       </ModalBody>
