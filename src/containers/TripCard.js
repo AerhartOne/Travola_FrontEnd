@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { 
         Card, 
-        CardImg, 
-        CardText, 
+        CardImg,
         CardBody,
-        CardFooter,
         CardTitle, 
         CardSubtitle, 
         Button,
-        Col,
         Form,
-        Input
 } from 'reactstrap';
 import axios from 'axios'
 import '../css/TripCard.css'
@@ -28,7 +24,7 @@ class TripCard extends Component {
 
     handleDelete = e => {
         e.preventDefault()
-        let formData = new FormData
+        let formData = new FormData()
         formData.set('trip_id', this.state.trip.id)
         axios.post("http://localhost:5000/api/v1/trips/delete",formData,{
             headers: {

@@ -1,15 +1,12 @@
 import React from 'react'
-import Link from 'react-router-dom'
 import NavBar from '../containers/Navbar'
 import { 
-        Button,
         Container,
         Col,
         Row,
         Card,
         CardBody,
         CardTitle,
-        CardSubtitle,
         CardText,
         CardImg
         } from 'reactstrap'
@@ -59,7 +56,7 @@ export default class UserProfilePage extends React.Component{
                         <h3>@{user.username}</h3>
                         <h5>
                             {
-                                user.bio_text !== undefined && user.bio_text !== null && user.bio_text != "" ?
+                                user.bio_text !== undefined && user.bio_text !== null && user.bio_text !== "" ?
                                 <React.Fragment>
                                     {user.bio_text}
                                 </React.Fragment>

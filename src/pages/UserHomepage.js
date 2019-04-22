@@ -4,19 +4,9 @@ import {
         Container ,
         Row,
         Col,
-        Card,
-        CardHeader,
-        CardBody,
-        CardFooter,
-        CardTitle,
-        CardSubtitle,
-        CardText,
-        CardImg,
         Button,
     } from 'reactstrap'
 import '../css/UserHomepage.css'
-import button from '../images/add_button.png'
-import defaults from '../images/default-image.png'
 import NewTripModal from '../containers/NewTripModal'
 import axios from 'axios'
 import Loader from '../components/Loader'

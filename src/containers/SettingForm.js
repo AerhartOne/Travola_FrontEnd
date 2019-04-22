@@ -49,7 +49,6 @@ class SettingForm extends React.Component {
 
     handleChange(e) {
         let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
         let name = target.name;
 
         this.setState({
@@ -60,7 +59,7 @@ class SettingForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let formData = new FormData
+        let formData = new FormData()
 
         formData.append('user_id', localStorage.getItem('id'))
         formData.append('username', this.state.username)
