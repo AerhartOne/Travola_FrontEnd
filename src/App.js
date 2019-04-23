@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route } from 'react-router-dom';
+import {
+  Container
+} from 'reactstrap'
 
 import Homepage from './pages/Homepage';
 import UserHomepage from './pages/UserHomepage';
@@ -26,69 +29,71 @@ class App extends Component {
   render() {
     return (
       <>
-        <Router>
+        
+          <Router>
 
-          <Route exact strict path = "/"
-            component = {props => {
-              return (
-                <Homepage {...props} >
-                  <SignUpForm/>    
-                </Homepage>
-              )
-            }}
-          />
+            <Route exact strict path = "/"
+              component = {props => {
+                return (
+                  <Homepage {...props} >
+                    <SignUpForm/>    
+                  </Homepage>
+                )
+              }}
+            />
 
-          <Route exact strict path="/sign-in"
-            component = {props => {
-              return (
-                <Homepage {...props} >
-                  <SignInForm/>     
-                </Homepage>
-              )
-            }}
-          />
+            <Route exact strict path="/sign-in"
+              component = {props => {
+                return (
+                  <Homepage {...props} >
+                    <SignInForm/>     
+                  </Homepage>
+                )
+              }}
+            />
 
-          <Route exact strict path = "/user/:username"
-            component = {props => {
-              return (
-                <UserHomepage {...props} />
-              )
-            }}
-          />
+            <Route exact strict path = "/user/:username"
+              component = {props => {
+                return (
+                  <UserHomepage {...props} />
+                )
+              }}
+            />
 
-          <Route exact strict path = "/user/:username/profile"
-            component = {props => {
-              return (
-                <UserProfilePage {...props} />
-              )
-            }}
-          />
-          
-          <Route exact strict path = "/user/:username/setting"
-            component = {props => {
-              return (
-                <UserSettingPage {...props} />
-              )
-            }}
-          />
+            <Route exact strict path = "/user/:username/profile"
+              component = {props => {
+                return (
+                  <UserProfilePage {...props} />
+                )
+              }}
+            />
+            
+            <Route exact strict path = "/user/:username/setting"
+              component = {props => {
+                return (
+                  <UserSettingPage {...props} />
+                )
+              }}
+            />
 
-          <Route exact strict path = "/user/:username/dashboard/:trip_name"
-            component = {props => {
-              return (
-                <TripDashboard {...props} />
-              )
-            }}
-          />
-          
-          <Route exact strict path = "/user/:username/subscriptions"
-            component = {props => {
-              return (
-                <SubscriptionPage {...props} />
-              )
-            }}
-          />
+            <Route exact strict path = "/user/:username/dashboard/:trip_name"
+              component = {props => {
+                return (
+                  <TripDashboard {...props} />
+                )
+              }}
+            />
+            
+            <Route exact strict path = "/user/:username/subscriptions"
+              component = {props => {
+                return (
+                  <SubscriptionPage {...props} />
+                )
+              }}
+            />
 
-        </Router>
+          </Router>
+        
       </>
     );
   }
