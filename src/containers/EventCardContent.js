@@ -32,6 +32,7 @@ class EventCardContent extends Component {
       eventName:'',
       desc:'',
       dateTime:'',
+      dateTimeLocal:'',
       location:'',
       modal: false,
       editMode: false
@@ -89,7 +90,8 @@ class EventCardContent extends Component {
       eventName: this.props.tripEvent.event_name,
       desc: this.props.tripEvent.desc,
       location: this.props.tripEvent.location,
-      dateTime: this.props.tripEvent.date_time
+      dateTime: this.props.tripEvent.date_time,
+      dateTimeLocal: this.props.tripEvent.date_time_local
     })
   }
 
@@ -113,7 +115,8 @@ class EventCardContent extends Component {
 
   changeDateTime(e) {
     this.setState ({
-      dateTime: e.target.value
+      dateTime: e.target.value,
+      dateTimeLocal: e.target.value
     })
   }
 
@@ -185,7 +188,7 @@ class EventCardContent extends Component {
 }
 
   render() {
-    const {files, photos, fileToUpload, photoToUpload, eventName, desc, dateTime, location, modal, editMode} = this.state
+    const {files, photos, fileToUpload, photoToUpload, eventName, desc, dateTime, dateTimeLocal, location, modal, editMode} = this.state
     const Map = ReactMapBoxG1( {accessToken: 'pk.eyJ1Ijoic3V6dWtpc3RldmVuIiwiYSI6ImNqdWpwcDhhYzFuczE0ZXAzamNkMWpvd2sifQ.PAW2yuz30KwTEL983iIN_g'} )
       return (
         <>
@@ -227,7 +230,7 @@ class EventCardContent extends Component {
 
               <FormGroup className="EventCardContent">
                 <Label for="eventDate">Date/Time</Label>
-                <Input type="datetime-local" name="date" id="event-date" placeholder="Event Date" onChange={this.changeDateTime} value={dateTime} />
+                <Input type="datetime-local" name="date" id="event-date" onChange={this.changeDateTime} value={dateTimeLocal} />
               </FormGroup>
 
               <FormGroup className="EventCardContent">
