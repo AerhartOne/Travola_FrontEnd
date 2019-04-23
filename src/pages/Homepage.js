@@ -1,6 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import logo from '../images/travola-logo.png';
+import homeimg from '../images/MacBook Design Mockup.png';
+
+import { Button } from 'reactstrap'
+
+
 
 
 export default class Homepage extends React.Component{
@@ -16,6 +21,19 @@ export default class Homepage extends React.Component{
                             <a href="/">
                                 <img src={ logo } alt="Travola-Logo" width="40%" height="auto" />
                             </a>
+                        </div>
+                        
+                        <div id="homepage-img">
+                            <img src={ homeimg } alt="Macbook Mockup" height="auto" width="80%" 
+                            style={{paddingTop:"50px", paddingLeft:"40px", width:"600px"}}></img>
+                        </div>
+
+                        <div id="homepage-tagline">
+                            <h1 style={{paddingLeft:"30px", paddingTop:"30px"}}>
+                                Travel planning made easier with <img src={ logo } width="40%" height="auto" hspace="170"/>
+                            </h1>
+
+                            <Button type="submit" color='info' style={{marginLeft:"250px", marginTop:"10px"}}>Sign up now!</Button>
                         </div>
 
                     </div>

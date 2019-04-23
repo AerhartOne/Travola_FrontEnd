@@ -15,6 +15,8 @@ import {
 import axios from 'axios'
 import '../css/EventCard.css'
 
+
+
 class EventCard extends Component {
     constructor(props){
         super(props)
