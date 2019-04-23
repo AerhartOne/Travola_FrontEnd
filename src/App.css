@@ -30,6 +30,11 @@
     overflow: auto;
 }
 
+#homepage-img {
+    height:auto;
+    width:80%;
+}
+
 .PageSwitcher {
     display: flex;
     justify-content: flex-end;
