@@ -72,7 +72,7 @@ class SignInForm extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields" >
                 <div className="row FormField">
                     {/* <label className="FormField__Label" htmlFor="email">Username</label> */}
-                    <input type="text" id="name" className="FormField__Input w-100" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+                    <input type="text" id="name" className="FormField__Input w-100" placeholder="Username" name="username" autocomplete="off" value={this.state.username} onChange={this.handleChange} />
                 </div>
 
                 <div className="row FormField">
