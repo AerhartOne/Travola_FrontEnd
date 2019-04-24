@@ -33,9 +33,11 @@ class EventCardContent extends Component {
       desc:'',
       dateTime:'',
       dateTimeLocal:'',
-      location:'',
+      locationAddress:'',
       modal: false,
-      editMode: false
+      editMode: false,
+      latitude: 0,
+      longitude: 0
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -85,14 +87,21 @@ class EventCardContent extends Component {
     })
   }
 
+  // getLocation() {
+  //   axios.get("http://localhost:5000/api/v1/maps" + )
+  // }
+
   populateFieldsFromPropsTripEvent() {
     this.setState({
       eventName: this.props.tripEvent.event_name,
       desc: this.props.tripEvent.desc,
-      location: this.props.tripEvent.location,
+      locationAddress: this.props.tripEvent.location_address,
       dateTime: this.props.tripEvent.date_time,
-      dateTimeLocal: this.props.tripEvent.date_time_local
+      dateTimeLocal: this.props.tripEvent.date_time_local,
+      latitude: this.props.tripEvent.latitude,
+      longitude: this.props.tripEvent.longitude
     })
+    console.log(this.state)
   }
 
   changeEventName(e) {
@@ -103,7 +112,7 @@ class EventCardContent extends Component {
 
   changeLocation(e) {
     this.setState ({
-      location: e.target.value
+      locationAddress: e.target.value
     })
   }
 
@@ -137,6 +146,23 @@ class EventCardContent extends Component {
     }
   }
 
+  handleLocationSearch = (e) => {
+    let query = document.getElementById('event-location').value
+    console.log(query)
+    console.log(this.state)
+    let formData = new FormData()
+    formData.set('location_search', query)
+    axios.post( "http://localhost:5000/api/v1/maps/search", formData)
+    .then( result => {
+      console.log(result)
+      this.setState({
+        latitude: result.data.latitude, 
+        longitude: result.data.longitude,
+        locationAddress: result.data.address_short
+      })
+    })
+  }
+
   handleSubmit = (e) =>{
     e.preventDefault()
     let jwt_token = localStorage.getItem('jwt_token')
@@ -144,8 +170,10 @@ class EventCardContent extends Component {
     let formData = new FormData()
     formData.set('event_name',this.state.eventName)
     formData.set('date_time',this.state.dateTime)
-    formData.set('location',this.state.location)
+    formData.set('location_address',this.state.locationAddress)
     formData.set('desc',this.state.desc)
+    formData.set('latitude',this.state.latitude)
+    formData.set('longitude',this.state.longitude)
 
     let fileData = new FormData()
     fileData.set('file', this.state.fileToUpload)
@@ -188,7 +216,7 @@ class EventCardContent extends Component {
 }
 
   render() {
-    const {files, photos, fileToUpload, photoToUpload, eventName, desc, dateTime, dateTimeLocal, location, modal, editMode} = this.state
+    const {files, photos, fileToUpload, photoToUpload, eventName, desc, dateTime, dateTimeLocal, locationAddress, modal, editMode} = this.state
     const Map = ReactMapBoxG1( {accessToken: 'pk.eyJ1Ijoic3V6dWtpc3RldmVuIiwiYSI6ImNqdWpwcDhhYzFuczE0ZXAzamNkMWpvd2sifQ.PAW2yuz30KwTEL983iIN_g'} )
       return (
         <>
@@ -216,13 +244,14 @@ class EventCardContent extends Component {
 
               <FormGroup className="EventCardContent">
                 <Label for="eventLocation">Location</Label>
-                <Input type="location" name="location" id="event-location" placeholder="Location" onChange={this.changeLocation} value={location}/>
-                <Map style="mapbox://styles/mapbox/streets-v11" containerStyle={{width: "100%", height: "400px"}}>
+                <Input type="location" name="location" id="event-location" placeholder="Location" onChange={this.changeLocation} value={locationAddress}/>
+                <Button type="button" onClick={this.handleLocationSearch} color="success" className="#">Search</Button>
+                <Map style="mapbox://styles/mapbox/streets-v11" containerStyle={{width: "100%", height: "400px"}} center={[this.state.latitude, this.state.longitude]}>
                     <Layer
                       type="symbol"
                       id="marker"
                       layout={{ "icon-image": "marker-15" }}>
-                      <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+                      <Feature coordinates={[this.state.latitude, this.state.longitude]}/>
                     </Layer>
                 </Map>
               </FormGroup>
@@ -256,7 +285,7 @@ class EventCardContent extends Component {
             :
               <>
                 <CardSubtitle>Date/Time: {dateTime}</CardSubtitle>
-                { location ? <CardSubtitle>At: {location}</CardSubtitle> : null }
+                { locationAddress ? <CardSubtitle>At: {locationAddress}</CardSubtitle> : null }
                 { desc ? <CardText className='my-3'>Description: {desc}</CardText> : null }
                 <Container fluid className='text-center mt-3'>
                     <Row>

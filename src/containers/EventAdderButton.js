@@ -14,6 +14,7 @@ import {
         InputGroupText
 } from 'reactstrap';
 import axios from 'axios'
+import ReactMapBoxG1, { Layer, Feature } from 'react-mapbox-gl';
 
 class EventAdderButton extends Component {
     constructor(props){
@@ -22,10 +23,12 @@ class EventAdderButton extends Component {
     this.state = {
         modal: false,
         event_name: '',
-        location:'',
+        locationAddress:'',
         date_time:'',
         trip_id:'',
-        desc:''
+        desc:'',
+        latitude: 0,
+        longitude: 0
     };
 
     this.toggle = this.toggle.bind(this);
@@ -56,7 +59,7 @@ handleEventName = (e) => {
 
 handleLocation = (e) =>{
     this.setState({
-        location:e.target.value
+        locationAddress:e.target.value
     })
 }
 
@@ -72,15 +75,34 @@ handleDate = (e) =>{
     })
 }
 
+handleLocationSearch = (e) => {
+    let query = document.getElementById('input-location').value
+    console.log(query)
+    console.log(this.state)
+    let formData = new FormData()
+    formData.set('location_search', query)
+    axios.post( "http://localhost:5000/api/v1/maps/search", formData)
+    .then( result => {
+      console.log(result)
+      this.setState({
+        latitude: result.data.latitude, 
+        longitude: result.data.longitude,
+        locationAddress: result.data.address_short
+      })
+    })
+  }
+
 handleSubmit = (e) =>{
     e.preventDefault()
     console.log(this.state)
     let formData = new FormData()
     formData.set('event_name',this.state.event_name)
     formData.set('date_time',this.state.date_time)
-    formData.set('location',this.state.location)
+    formData.set('location_address',this.state.locationAddress)
     formData.set('parent_trip',this.state.trip_id.id)
     formData.set('desc',this.state.desc)
+    formData.set('latitude',this.state.latitude)
+    formData.set('longitude',this.state.longitude)
     axios({
         method:"POST",
         url:"http://localhost:5000/api/v1/trip_events/new",
@@ -94,6 +116,7 @@ handleSubmit = (e) =>{
     })
 }
     render() {
+        const Map = ReactMapBoxG1( {accessToken: 'pk.eyJ1Ijoic3V6dWtpc3RldmVuIiwiYSI6ImNqdWpwcDhhYzFuczE0ZXAzamNkMWpvd2sifQ.PAW2yuz30KwTEL983iIN_g'} )
         return (
             <div>
                 
@@ -130,8 +153,18 @@ handleSubmit = (e) =>{
                                     <InputGroupAddon addonType="prepend">
                                         <InputGroupText>Location</InputGroupText>
                                     </InputGroupAddon>
-                                    <Input type="text" id="input-location" onChange={this.handleLocation} />
+                                    <Input type="text" name="input-location" id="input-location" placeholder="Location" onChange={this.handleLocation} value={this.state.locationAddress}/>
                                 </InputGroup>
+
+                                    <Button type="button" onClick={this.handleLocationSearch} color="success" className="#">Search</Button>
+                                    <Map style="mapbox://styles/mapbox/streets-v11" containerStyle={{width: "100%", height: "400px"}} center={[this.state.latitude, this.state.longitude]}>
+                                        <Layer
+                                        type="symbol"
+                                        id="marker"
+                                        layout={{ "icon-image": "marker-15" }}>
+                                        <Feature coordinates={[this.state.latitude, this.state.longitude]}/>
+                                        </Layer>
+                                    </Map>
                             </FormGroup>
 
                             <FormGroup>
